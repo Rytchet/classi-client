@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import logo from "../classi.png";
-import "./AppNavbar.css";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Container
+} from "reactstrap";
 
 class AppNavbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  }
+  state = {
+    isOpen: false
+  };
 
   toggle = () => {
     this.setState({
@@ -24,30 +25,19 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/">Classi</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#featured">Featured</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
+        <Navbar color="dark" dark expand="sm" className="mb-5">
+          <Container>
+            <NavbarBrand href="/">Classi</NavbarBrand>
+            <NavbarToggler onClick={this.toggle}></NavbarToggler>
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="/">Link one</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
         </Navbar>
-        <br />
-        <Nav justify dark variant="tabs">
-          <Nav.Item>
-            <Nav.Link href="/classical-cars">Classical Cars</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/" eventKey="link-1">
-              Trending
-            </Nav.Link>
-          </Nav.Item>
-        </Nav>
-        <br />
       </div>
     );
   }
