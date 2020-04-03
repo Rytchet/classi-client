@@ -9,19 +9,8 @@ import ClassicCars from './components/pages/ClassicCars';
 function App() {
   return (
     <Router>
-      <div className="Nav">
-        <AppNavbar />
-      </div>
-      <Route
-        exact
-        path="/"
-        render={props => (
-          <React.Fragment>
-            <AppCarousel />
-          </React.Fragment>
-        )}
-      />
-      <Route path="/classical-cars" component={ClassicCars} />
+      <AppNavbar />
+
       <Listings />
     </Router>
   );

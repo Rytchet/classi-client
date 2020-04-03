@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import testImage from '../testcar.png';
 
 class AppCarousel extends Component {
   render() {
@@ -10,7 +9,7 @@ class AppCarousel extends Component {
           <img
             style={{ flex: 1, alignItems: 'center' }}
             className="d-block w-100 h-25"
-            src={testImage}
+            src="/testcar.png"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -21,7 +20,7 @@ class AppCarousel extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100 h-25"
-            src={testImage}
+            src="/testcar.png"
             alt="Third slide"
           />
 
@@ -31,7 +30,7 @@ class AppCarousel extends Component {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src={testImage} alt="Third slide" />
+          <img className="d-block w-100" src="/testcar.png" alt="Third slide" />
 
           <Carousel.Caption>
             <h3>Third slide label</h3>
