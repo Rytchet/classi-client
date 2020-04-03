@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import AppNavbar from '../AppNavbar';
 
 export default function ClassicCars() {
@@ -7,5 +7,5 @@ export default function ClassicCars() {
       <AppNavbar />
       <h1>Get listings from API - Put into cards</h1>
     </React.Fragment>
-  )
+  );
 }
