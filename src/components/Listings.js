@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Container } from 'reactstrap';
 import testImage from '../testcar.png';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import axios from 'axios';
 
 class Listings extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      listings: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get('https://classi-server.herokuapp.com/api/listings').then(res => {
+      this.setState({
+        listings: res.data,
+        isLoaded: true
+      });
+    });
+  }
+
   render() {
+    const { error, isLoaded, items } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    }
     return (
       <Container>
+        <ul>
+          {this.state.listings.map(listing => (
+            <li>{listing.title}</li>
+          ))}
+        </ul>
         <CardGroup>
           <Card>
             <Card.Img variant="top" src={testImage} />

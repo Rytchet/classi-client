@@ -37,7 +37,7 @@ class AppNavbar extends Component {
           </Form>
         </Navbar>
         <br />
-        <Nav justify dark variant="tabs">
+        <Nav justify dark="true" variant="tabs">
           <Nav.Item>
             <Nav.Link href="/classical-cars">Classical Cars</Nav.Link>
           </Nav.Item>

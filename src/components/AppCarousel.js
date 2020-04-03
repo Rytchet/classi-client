@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import logo from '../classi.png';
 import testImage from '../testcar.png';
 
 class AppCarousel extends Component {
