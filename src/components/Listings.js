@@ -25,12 +25,10 @@ class Listings extends Component {
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
+    if (!this.state.isLoaded) {
       return <div>Loading...</div>;
     }
+
     return (
       <Container>
         <ul>
