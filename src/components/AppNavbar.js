@@ -21,7 +21,9 @@ class AppNavbar extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#featured">Featured</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="#categories">Categories</Nav.Link>
+              <Nav.Link href="#brands">Brands</Nav.Link>
+
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-2" />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Card, CardColumns, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
-class Listings extends Component {
+class Featured extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ class Listings extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://classi-server.herokuapp.com/api/listings').then(res => {
+    axios.get('https://classi-server.herokuapp.com/api/listings/popular').then(res => {
       this.setState({
         listings: res.data,
         isLoaded: true
@@ -43,9 +43,6 @@ class Listings extends Component {
                 <Card.Subtitle className="mb-2 text-muted">
                   {listing.car.year} {listing.car.make} {listing.car.model}
                 </Card.Subtitle>
-                <Card.Text>
-                  {listing.description || 'There is no description'}
-                </Card.Text>
               </Card.Body>
               <Card.Footer>
                 <small className="text-muted">Price: {listing.price}</small>
@@ -58,4 +55,4 @@ class Listings extends Component {
   }
 }
 
-export default Listings;
+export default Featured;

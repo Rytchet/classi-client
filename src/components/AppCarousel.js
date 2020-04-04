@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { Carousel, Spinner, Alert } from 'react-bootstrap';
+import { Carousel, Spinner, Fade, Button} from 'react-bootstrap';
 import axios from 'axios';
 import './AppCarousel.css';
 
 
 class AppCarousel extends Component {
+  
   constructor(props) {
+    
     super(props);
     this.state = {
       isLoaded: false,
       listings: []
     };
-  }
+  }  
 
   componentDidMount() {
     axios.get('https://classi-server.herokuapp.com/api/listings/popular').then(res => {
@@ -27,29 +29,30 @@ class AppCarousel extends Component {
       return (
         <div>
           <center>
+            <br />
             <Spinner animation="border" variant="secondary" />
-            <h1>Loading...</h1>
+            <h1>Checking Oil Levels...</h1>
           </center>
+          <br />
         </div>
       );
     }
+    
     return (
       <center>
-      <Carousel className="w-10 h-10">
+      <Carousel className="d-block w-40">
         {this.state.listings.map(listing =>
-          <Carousel.Item key={listing._id}>
+          <Carousel.Item fade="true" key={listing._id}>
             <img
               style={{ flex: 1, alignItems: 'center' }}
-              className="w-10 h-10"
+              className="d-block"
               src="/testcar.png"
               alt="First slide"
+              width="75%"
             />
           <Carousel.Caption>
-            <Alert variant="info">
-        <h3>{listing.car.year} {listing.car.make} {listing.car.model} </h3>
-            <p>{listing.description || 'There is no description'}</p>
-            </Alert>
-
+            <h3 href="#">{listing.car.year} {listing.car.make} {listing.car.model}</h3>
+        <p>{listing.email || 'Click To View Details'} | Views: {listing.times_viewed}</p>
           </Carousel.Caption>
         </Carousel.Item>
         )}
@@ -59,5 +62,6 @@ class AppCarousel extends Component {
     );
   }
 }
+
 
 export default AppCarousel;
