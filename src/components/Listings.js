@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Card, CardColumns } from 'react-bootstrap';
+import { Container, Card, CardColumns, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
 class Listings extends Component {
@@ -25,6 +25,7 @@ class Listings extends Component {
       return (
         <div>
           <center>
+            <Spinner animation="border" variant="secondary" />
             <h1>Loading...</h1>
           </center>
         </div>
