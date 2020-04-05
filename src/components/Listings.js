@@ -7,17 +7,19 @@ class Listings extends Component {
     super(props);
     this.state = {
       isLoaded: false,
-      listings: []
+      listings: [],
     };
   }
 
   componentDidMount() {
-    axios.get('https://classi-server.herokuapp.com/api/listings').then(res => {
-      this.setState({
-        listings: res.data,
-        isLoaded: true
+    axios
+      .get('https://classi-server.herokuapp.com/api/listings')
+      .then((res) => {
+        this.setState({
+          listings: res.data,
+          isLoaded: true,
+        });
       });
-    });
   }
 
   render() {
@@ -35,7 +37,7 @@ class Listings extends Component {
     return (
       <Container>
         <CardColumns>
-          {this.state.listings.map(listing => (
+          {this.state.listings.map((listing) => (
             <Card key={listing._id}>
               <Card.Img variant="top" src="/testcar.png" />
               <Card.Body>

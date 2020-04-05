@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
-import { Carousel, Spinner, Fade, Button} from 'react-bootstrap';
+import { Carousel, Spinner, Fade, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './AppCarousel.css';
 
-
 class AppCarousel extends Component {
-  
   constructor(props) {
-    
     super(props);
     this.state = {
       isLoaded: false,
-      listings: []
+      listings: [],
     };
-  }  
+  }
 
   componentDidMount() {
-    axios.get('https://classi-server.herokuapp.com/api/listings/popular').then(res => {
-      this.setState({
-        listings: res.data,
-        isLoaded: true
+    axios
+      .get('https://classi-server.herokuapp.com/api/listings/popular')
+      .then((res) => {
+        this.setState({
+          listings: res.data,
+          isLoaded: true,
+        });
       });
-    });
   }
 
   render() {
@@ -37,31 +36,34 @@ class AppCarousel extends Component {
         </div>
       );
     }
-    
+
     return (
       <center>
-      <Carousel className="d-block w-40">
-        {this.state.listings.map(listing =>
-          <Carousel.Item fade="true" key={listing._id}>
-            <img
-              style={{ flex: 1, alignItems: 'center' }}
-              className="d-block"
-              src="/testcar.png"
-              alt="First slide"
-              width="75%"
-            />
-          <Carousel.Caption>
-            <h3 href="#">{listing.car.year} {listing.car.make} {listing.car.model}</h3>
-        <p>{listing.email || 'Click To View Details'} | Views: {listing.times_viewed}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        )}
- 
-      </Carousel>
+        <Carousel className="d-block w-40">
+          {this.state.listings.map((listing) => (
+            <Carousel.Item fade="true" key={listing._id}>
+              <img
+                style={{ flex: 1, alignItems: 'center' }}
+                className="d-block"
+                src="/testcar.png"
+                alt="First slide"
+                width="75%"
+              />
+              <Carousel.Caption>
+                <h3 href="#">
+                  {listing.car.year} {listing.car.make} {listing.car.model}
+                </h3>
+                <p>
+                  {listing.email || 'Click To View Details'} | Views:{' '}
+                  {listing.times_viewed}
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </center>
     );
   }
 }
-
 
 export default AppCarousel;

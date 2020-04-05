@@ -23,7 +23,6 @@ class AppNavbar extends Component {
               <Nav.Link href="#featured">Featured</Nav.Link>
               <Nav.Link href="#categories">Categories</Nav.Link>
               <Nav.Link href="#brands">Brands</Nav.Link>
-
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-2" />
@@ -33,7 +32,7 @@ class AppNavbar extends Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
-       
+
         {/* <Nav justify dark="true" variant="tabs">
           <Nav.Item>
             <Nav.Link href="/classical-cars">Classical Cars</Nav.Link>

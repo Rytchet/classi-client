@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <AppNavbar />
-      <AppCarousel/>
+      <AppCarousel />
       <br />
       <Listings />
     </Router>
