@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel, Spinner, Fade, Button } from 'react-bootstrap';
 import axios from 'axios';
-import './AppCarousel.css';
+import './styles/AppCarousel.css';
 
 class AppCarousel extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class AppCarousel extends Component {
           <center>
             <br />
             <Spinner animation="border" variant="secondary" />
-            <h1>Checking Oil Levels...</h1>
+            <h1>Checking Oil Levels... (loading carousel)</h1>
           </center>
           <br />
         </div>
@@ -40,14 +40,14 @@ class AppCarousel extends Component {
     return (
       <center>
         <Carousel className="d-block w-40">
-          {this.state.listings.map((listing) => (
+          {this.state.listings.slice(0, 5).map((listing) => (
             <Carousel.Item fade="true" key={listing._id}>
               <img
                 style={{ flex: 1, alignItems: 'center' }}
                 className="d-block"
                 src="/testcar.png"
                 alt="First slide"
-                width="75%"
+                width="100%"
               />
               <Carousel.Caption>
                 <h3 href="#">
