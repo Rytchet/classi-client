@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
@@ -11,6 +12,14 @@ export default function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    axios
+      .post('/auth', {
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log(res);
+      });
   }
 
   return (

@@ -12,14 +12,12 @@ class Listings extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get('https://classi-server.herokuapp.com/api/listings')
-      .then((res) => {
-        this.setState({
-          listings: res.data,
-          isLoaded: true,
-        });
+    axios.get('/listings').then((res) => {
+      this.setState({
+        listings: res.data,
+        isLoaded: true,
       });
+    });
   }
 
   render() {

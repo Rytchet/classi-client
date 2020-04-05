@@ -5,7 +5,7 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="dark" variant="dark" expand="md">
+        <Navbar bg="dark" variant="dark" expand="sm">
           <Navbar.Brand href="/">
             <img
               alt=""
@@ -19,10 +19,7 @@ class AppNavbar extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#featured">Featured</Nav.Link>
-              <Nav.Link href="#categories">Categories</Nav.Link>
-              <Nav.Link href="#brands">Brands</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-2" />

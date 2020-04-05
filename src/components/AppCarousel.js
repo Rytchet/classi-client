@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel, Spinner, Fade, Button } from 'react-bootstrap';
+import { Carousel, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import './styles/AppCarousel.css';
 
@@ -13,14 +13,12 @@ class AppCarousel extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get('https://classi-server.herokuapp.com/api/listings/popular')
-      .then((res) => {
-        this.setState({
-          listings: res.data,
-          isLoaded: true,
-        });
+    axios.get('/listings/popular').then((res) => {
+      this.setState({
+        listings: res.data,
+        isLoaded: true,
       });
+    });
   }
 
   render() {

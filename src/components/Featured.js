@@ -12,14 +12,12 @@ class Featured extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get('https://classi-server.herokuapp.com/api/listings/popular')
-      .then((res) => {
-        this.setState({
-          listings: res.data,
-          isLoaded: true,
-        });
+    axios.get('/listings/popular').then((res) => {
+      this.setState({
+        listings: res.data,
+        isLoaded: true,
       });
+    });
   }
 
   render() {
