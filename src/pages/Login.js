@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     axios
       .post('/auth', {
@@ -18,7 +19,12 @@ export default function Login(props) {
         password,
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        localStorage.setItem('token', res.data.token);
+      })
+      .catch((e) => {
+        console.log(e);
+        setError('Login failed.');
       });
   }
 
@@ -45,6 +51,11 @@ export default function Login(props) {
         <Button block disabled={!validateForm()} type="submit">
           Login
         </Button>
+        {error && (
+          <Alert className="mt-3" variant="danger">
+            {error}
+          </Alert>
+        )}
       </Form>
     </div>
   );
