@@ -1,8 +1,7 @@
 import React from 'react';
-import AppNavbar from './components/AppNavbar';
-import AppCarousel from './components/AppCarousel';
-import Listings from './components/Listings';
-import Login from './pages/Login';
+import LoginPage from './LoginPage';
+import HomePage from './HomePage';
+import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,14 +12,14 @@ axios.defaults.baseURL = 'https://classi-server.herokuapp.com/api';
 function App() {
   return (
     <Router>
-      <AppNavbar />
       <Switch>
-        <Route path="/login" exact component={Login} />
-        <Route path="/" exact>
-          <AppCarousel />
-          <br />
-          <Listings />
-        </Route>
+        <Route path="/login" exact component={LoginPage} />
+
+        <PrivateRoute path="/" exact component={HomePage} />
+
+        {/* TODO: 404 page 
+          <Route component={NotFound}></Route> 
+          */}
       </Switch>
     </Router>
   );

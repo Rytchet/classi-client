@@ -3,6 +3,8 @@ import { Form, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
 
 class AppNavbar extends Component {
   render() {
+    const user = this.props.user || false;
+
     return (
       <div>
         <Navbar bg="dark" variant="dark" expand="sm">
@@ -19,7 +21,7 @@ class AppNavbar extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/login">{user ? 'Logout' : 'Login'}</Nav.Link>
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-2" />
@@ -29,7 +31,6 @@ class AppNavbar extends Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
-
         {/* <Nav justify dark="true" variant="tabs">
           <Nav.Item>
             <Nav.Link href="/classical-cars">Classical Cars</Nav.Link>
