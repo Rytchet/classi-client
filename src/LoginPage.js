@@ -4,6 +4,11 @@ import AppNavbar from './components/AppNavbar';
 
 import { userService } from './userService';
 
+// A lot of the code is taken from here
+// https://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#login-page-jsx
+// Dont sue me
+// It has some nice error messages and shit, we can implement it maybe
+
 export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +18,6 @@ export default class LoginPage extends React.Component {
     this.state = {
       email: '',
       password: '',
-      submitted: false,
       loading: false,
       error: '',
     };
@@ -29,7 +33,6 @@ export default class LoginPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.setState({ submitted: true });
     const { email, password } = this.state;
 
     // Stop if form is invalid
@@ -53,7 +56,7 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    const { email, password, submitted, loading, error } = this.state;
+    const { email, password, loading, error } = this.state;
     return (
       <div>
         <AppNavbar />
