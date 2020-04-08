@@ -37,7 +37,7 @@ export default class HomePage extends React.Component {
 
     return (
       <div key={this.state.listing._id}>
-        <AppNavbar />
+        <AppNavbar user={this.state.user} />
         <div className="container mt-5">
           <center>
             <Image src="/testcar.png" rounded height="350" width="550" />
