@@ -26,6 +26,7 @@ class AppNavbar extends Component {
             </Nav>
             <Form inline className="ml-auto">
               <FormControl type="text" placeholder="Search" className="mr-2" />
+              <br />
               <Button variant="outline-info" className="">
                 Search
               </Button>

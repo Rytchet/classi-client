@@ -51,7 +51,7 @@ class AppCarousel extends Component {
                 className="d-block"
                 src="/testcar.png"
                 alt="First slide"
-                width="100%"
+                width="50%"
               />
               <Carousel.Caption>
                 <h3 href="#">
