@@ -43,6 +43,21 @@ export class CreateListingPage extends Component {
       postcode,
     } = this.state;
 
+    if (
+      !(
+        title &&
+        make &&
+        model &&
+        year &&
+        mileage &&
+        price &&
+        description &&
+        postcode
+      )
+    ) {
+      return;
+    }
+
     this.setState({ loading: true });
 
     userService
