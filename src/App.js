@@ -3,6 +3,7 @@ import LoginPage from './LoginPage';
 import HomePage from './HomePage';
 import ListingPage from './ListingPage';
 import ProfilePage from './ProfilePage';
+import RegisterPage from './RegisterPage';
 import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,8 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login" exact component={LoginPage} />
+
+        <Route path="/register" exact component={RegisterPage} />
 
         <Route path="/listing/:id" component={ListingPage} />
 
