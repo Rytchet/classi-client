@@ -36,7 +36,7 @@ export default class HomePage extends React.Component {
     }
 
     return (
-      <div>
+      <div key={this.state.listing._id}>
         <AppNavbar />
         <div className="container mt-5">
           <center>
