@@ -1,5 +1,6 @@
 import React from 'react';
 import AppNavbar from './components/AppNavbar';
+import { Image, Jumbotron, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class ProfilePage extends React.Component {
@@ -35,16 +36,24 @@ export default class ProfilePage extends React.Component {
     const { localUser, user } = this.state;
 
     return (
-      <div>
+      <div bsPrefix=".bg-primary">
         <AppNavbar user={localUser} />
-        <img
-          src={'https://classi-server.herokuapp.com' + user.avatar_url}
-          height="400"
-          width="400"
-          alt="avatar"
-        ></img>
-        <p>Name: {user.name}</p>
-        {/* Get other details the same way */}
+        <Jumbotron fluid>
+          <Container>
+            <center>
+              <Image
+                src={'https://classi-server.herokuapp.com' + user.avatar_url}
+                height="400"
+                width="400"
+                alt="avatar"
+                roundedCircle
+              ></Image>
+            </center>
+            <br />
+            <h1>{user.name}</h1>
+            <h3>Favourites: {user.favourites}</h3>
+          </Container>
+        </Jumbotron>
       </div>
     );
   }

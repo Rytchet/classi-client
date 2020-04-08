@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel, Spinner } from 'react-bootstrap';
+import { Carousel, Spinner, Image } from 'react-bootstrap';
 import axios from 'axios';
 import './styles/AppCarousel.css';
 
@@ -40,8 +40,9 @@ class AppCarousel extends Component {
         <Carousel className="d-block w-40">
           {this.state.listings.slice(0, 5).map(listing => (
             <Carousel.Item fade="true" key={listing._id}>
-              <img
+              <Image
                 style={{ flex: 1, alignItems: 'center' }}
+                rounded
                 className="d-block"
                 src="/testcar.png"
                 alt="First slide"
