@@ -71,12 +71,14 @@ export default class RegisterPage extends React.Component {
                 type="text"
                 name="name"
                 value={name}
+                placeholder="Your Name Here"
                 onChange={this.handleChange}
               />
             </Form.Group>
             <Form.Group controlid="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
+                placeholder="Your Email Address"
                 autoFocus
                 type="email"
                 name="email"
@@ -87,6 +89,7 @@ export default class RegisterPage extends React.Component {
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                placeholder="Enter Password here"
                 type="password"
                 name="password"
                 value={password}

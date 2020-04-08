@@ -43,8 +43,8 @@ export default class ProfilePage extends React.Component {
             <center>
               <Image
                 src={'https://classi-server.herokuapp.com' + user.avatar_url}
-                height="400"
-                width="400"
+                height="250"
+                width="250"
                 alt="avatar"
                 roundedCircle
               ></Image>
@@ -52,8 +52,7 @@ export default class ProfilePage extends React.Component {
             <br />
             <h1>{user.name}</h1>
             <h3>
-              Favourites:{' '}
-              {user.favourites || 'Oh no! You have no favourites...'}
+              Favorites: {user.favorites || 'Oh no! You have no favourites...'}
             </h3>
             <p>{user.email}</p>
             <center>
