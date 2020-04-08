@@ -1,16 +1,16 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from '../components/AppNavbar';
 import { Link } from 'react-router-dom';
 
-import { userService } from './userService';
+import { userService } from '../userService';
 
 // A lot of the code is taken from here
 // https://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#login-page-jsx
 // Dont sue me
 // It has some nice error messages and shit, we can implement it maybe
 
-export default class LoginPage extends React.Component {
+export class LoginPage extends React.Component {
   constructor(props) {
     super(props);
 

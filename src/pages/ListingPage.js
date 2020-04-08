@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from '../components/AppNavbar';
 import { Spinner, Image, Button, Jumbotron, ListGroup } from 'react-bootstrap';
-import { userService } from './userService';
+import { userService } from '../userService';
 
-export default class HomePage extends React.Component {
+export class ListingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

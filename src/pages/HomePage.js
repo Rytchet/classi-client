@@ -1,9 +1,9 @@
 import React from 'react';
-import AppNavbar from './components/AppNavbar';
-import AppCarousel from './components/AppCarousel';
-import Listings from './components/Listings';
+import AppNavbar from '../components/AppNavbar';
+import AppCarousel from '../components/AppCarousel';
+import Listings from '../components/Listings';
 
-export default class HomePage extends React.Component {
+export class HomePage extends React.Component {
   constructor(props) {
     super(props);
 

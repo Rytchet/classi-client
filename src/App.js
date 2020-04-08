@@ -1,9 +1,11 @@
 import React from 'react';
-import LoginPage from './LoginPage';
-import HomePage from './HomePage';
-import ListingPage from './ListingPage';
-import ProfilePage from './ProfilePage';
-import RegisterPage from './RegisterPage';
+import {
+  LoginPage,
+  HomePage,
+  ListingPage,
+  ProfilePage,
+  RegisterPage,
+} from './pages/index.js';
 import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';

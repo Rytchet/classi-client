@@ -1,9 +1,9 @@
 import React from 'react';
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from '../components/AppNavbar';
 import { Image, Jumbotron, Container, Button } from 'react-bootstrap';
 import axios from 'axios';
 
-export default class ProfilePage extends React.Component {
+export class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
 
