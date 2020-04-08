@@ -21,17 +21,14 @@ export default class HomePage extends React.Component {
   componentDidMount() {
     // This code is retarded, i know, maybe I'll fix it later
     // It has to get the whole user to check if this listing is favorited
-    axios
-      .get('/listings/' + this.props.match.params.id)
-      .then(res => {
-        this.setState({
-          listing: res.data,
-          user: JSON.parse(localStorage.getItem('user')),
-          isLoaded: true,
-        });
-        return this.state.user;
-      })
-      .then(user => {
+    axios.get('/listings/' + this.props.match.params.id).then(res => {
+      this.setState({
+        listing: res.data,
+        user: JSON.parse(localStorage.getItem('user')),
+        isLoaded: true,
+      });
+
+      if (this.state.user) {
         axios.get('/users/' + this.state.user.id).then(res => {
           const favorites = res.data.favorites;
           favorites.forEach(id => {
@@ -42,7 +39,8 @@ export default class HomePage extends React.Component {
             }
           });
         });
-      });
+      }
+    });
   }
 
   handleFavorite() {
