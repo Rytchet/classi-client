@@ -37,8 +37,8 @@ class Listings extends Component {
       <Container className="mt-5">
         <CardColumns>
           {this.state.listings.map(listing => (
-            <Link to={'/listing/' + listing._id}>
-              <Card key={listing._id}>
+            <Link to={'/listing/' + listing._id} key={listing._id}>
+              <Card>
                 <Card.Img variant="top" src="/testcar.png" />
                 <Card.Body>
                   <Card.Title>{listing.title}</Card.Title>

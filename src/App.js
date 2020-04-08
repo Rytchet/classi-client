@@ -2,6 +2,7 @@ import React from 'react';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
 import ListingPage from './ListingPage';
+import ProfilePage from './ProfilePage';
 import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,7 +20,9 @@ function App() {
 
         <Route path="/listing/:id" component={ListingPage} />
 
-        <PrivateRoute path="/" exact component={HomePage} />
+        <PrivateRoute path="/profile" exact component={ProfilePage} />
+
+        <Route path="/" exact component={HomePage} />
 
         {/* TODO: 404 page 
           <Route component={NotFound}></Route> 
