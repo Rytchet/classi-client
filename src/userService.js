@@ -6,6 +6,7 @@ export const userService = {
   register,
   favorite,
   unfavorite,
+  createListing,
 };
 
 function login(email, password) {
@@ -58,6 +59,42 @@ function unfavorite(listingId, token) {
     method: 'delete',
     url: '/users/favorites/' + listingId,
     headers: { 'x-auth-token': token },
+  }).then(res => {
+    return res;
+  });
+}
+
+function createListing(
+  title,
+  make,
+  model,
+  year,
+  mileage,
+  price,
+  description,
+  postcode
+) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.token;
+
+  return axios({
+    method: 'post',
+    url: 'http://localhost:5000/api/listings',
+    headers: { 'x-auth-token': token },
+    data: {
+      title,
+      car: {
+        make,
+        model,
+        year,
+        mileage,
+      },
+      price,
+      description,
+      location: {
+        postcode,
+      },
+    },
   }).then(res => {
     return res;
   });

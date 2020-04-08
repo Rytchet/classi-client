@@ -20,12 +20,17 @@ class AppNavbar extends Component {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
+            <Nav className="mr-auto">
               <Nav.Link href="/login">{user ? 'Logout' : 'Login'}</Nav.Link>
               {!user && <Nav.Link href="/register">Register</Nav.Link>}
               {user && <Nav.Link href="/profile">Profile</Nav.Link>}
             </Nav>
-            <Form inline className="ml-auto">
+            <Nav>
+              {user && (
+                <Nav.Link href="/createListing">Add your own listing</Nav.Link>
+              )}
+            </Nav>
+            <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-2" />
               <br />
               <Button variant="outline-info" className="">
