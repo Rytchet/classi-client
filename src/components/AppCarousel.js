@@ -13,7 +13,7 @@ class AppCarousel extends Component {
   }
 
   componentDidMount() {
-    axios.get('/listings/popular').then((res) => {
+    axios.get('/listings/popular').then(res => {
       this.setState({
         listings: res.data,
         isLoaded: true,
@@ -38,7 +38,7 @@ class AppCarousel extends Component {
     return (
       <center>
         <Carousel className="d-block w-40">
-          {this.state.listings.slice(0, 5).map((listing) => (
+          {this.state.listings.slice(0, 5).map(listing => (
             <Carousel.Item fade="true" key={listing._id}>
               <img
                 style={{ flex: 1, alignItems: 'center' }}

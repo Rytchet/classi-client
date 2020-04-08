@@ -12,7 +12,7 @@ class Featured extends Component {
   }
 
   componentDidMount() {
-    axios.get('/listings/popular').then((res) => {
+    axios.get('/listings/popular').then(res => {
       this.setState({
         listings: res.data,
         isLoaded: true,
@@ -35,7 +35,7 @@ class Featured extends Component {
     return (
       <Container>
         <CardColumns>
-          {this.state.listings.map((listing) => (
+          {this.state.listings.map(listing => (
             <Card key={listing._id}>
               <Card.Img variant="top" src="/testcar.png" />
               <Card.Body>

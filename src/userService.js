@@ -11,7 +11,7 @@ function login(email, password) {
       email,
       password,
     })
-    .then((res) => {
+    .then(res => {
       let user = res.data.user;
       user.token = res.data.token;
 

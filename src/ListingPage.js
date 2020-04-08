@@ -1,7 +1,7 @@
-import React from "react";
-import axios from "axios";
-import AppNavbar from "./components/AppNavbar";
-import { Spinner, Image, Button, Jumbotron, ListGroup } from "react-bootstrap";
+import React from 'react';
+import axios from 'axios';
+import AppNavbar from './components/AppNavbar';
+import { Spinner, Image, Button, Jumbotron, ListGroup } from 'react-bootstrap';
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -9,16 +9,16 @@ export default class HomePage extends React.Component {
     this.state = {
       isLoaded: false,
       listing: {},
-      user: {}
+      user: {},
     };
   }
 
   componentDidMount() {
-    axios.get("/listings/" + this.props.match.params.id).then(res => {
+    axios.get('/listings/' + this.props.match.params.id).then(res => {
       this.setState({
         listing: res.data,
-        user: JSON.parse(localStorage.getItem("user")),
-        isLoaded: true
+        user: JSON.parse(localStorage.getItem('user')),
+        isLoaded: true,
       });
     });
   }
@@ -63,9 +63,9 @@ export default class HomePage extends React.Component {
           </center>
           <br />
           <Jumbotron>
-            <h1>{this.state.listing.title || "No title given."}</h1>
-            <h6>{this.state.listing.price || "No price given."}</h6>
-            <p>{this.state.listing.description || "No description given."}</p>
+            <h1>{this.state.listing.title || 'No title given.'}</h1>
+            <h6>{this.state.listing.price || 'No price given.'}</h6>
+            <p>{this.state.listing.description || 'No description given.'}</p>
             <p>
               <Button variant="primary">Contact</Button>
             </p>

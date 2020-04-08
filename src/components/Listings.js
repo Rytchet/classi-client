@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { Container, Card, CardColumns, Spinner } from "react-bootstrap";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Container, Card, CardColumns, Spinner } from 'react-bootstrap';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Listings extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
-      listings: []
+      listings: [],
     };
   }
 
   componentDidMount() {
-    axios.get("/listings").then(res => {
+    axios.get('/listings').then(res => {
       this.setState({
         listings: res.data,
-        isLoaded: true
+        isLoaded: true,
       });
     });
   }
@@ -37,7 +37,7 @@ class Listings extends Component {
       <Container className="mt-5">
         <CardColumns>
           {this.state.listings.map(listing => (
-            <Link to={"/listing/" + listing._id}>
+            <Link to={'/listing/' + listing._id}>
               <Card key={listing._id}>
                 <Card.Img variant="top" src="/testcar.png" />
                 <Card.Body>
