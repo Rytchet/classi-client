@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import AppNavbar from './components/AppNavbar';
 import { Spinner, Image, Button, Jumbotron, ListGroup } from 'react-bootstrap';
+import { userService } from './userService';
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -10,16 +11,55 @@ export default class HomePage extends React.Component {
       isLoaded: false,
       listing: {},
       user: {},
+      favorited: false,
+      msg: '',
     };
+    this.handleFavorite = this.handleFavorite.bind(this);
+    this.handleUnfavorite = this.handleUnfavorite.bind(this);
   }
 
   componentDidMount() {
-    axios.get('/listings/' + this.props.match.params.id).then(res => {
-      this.setState({
-        listing: res.data,
-        user: JSON.parse(localStorage.getItem('user')),
-        isLoaded: true,
+    // This code is retarded, i know, maybe I'll fix it later
+    // It has to get the whole user to check if this listing is favorited
+    axios
+      .get('/listings/' + this.props.match.params.id)
+      .then(res => {
+        this.setState({
+          listing: res.data,
+          user: JSON.parse(localStorage.getItem('user')),
+          isLoaded: true,
+        });
+        return this.state.user;
+      })
+      .then(user => {
+        axios.get('/users/' + this.state.user.id).then(res => {
+          const favorites = res.data.favorites;
+          favorites.forEach(id => {
+            if (id === this.props.match.params.id) {
+              this.setState({
+                favorited: true,
+              });
+            }
+          });
+        });
       });
+  }
+
+  handleFavorite() {
+    const listingId = this.state.listing._id;
+    const token = this.state.user.token;
+
+    userService.favorite(listingId, token).then(msg => {
+      this.setState({ favorited: true });
+    });
+  }
+
+  handleUnfavorite() {
+    const listingId = this.state.listing._id;
+    const token = this.state.user.token;
+
+    userService.unfavorite(listingId, token).then(msg => {
+      this.setState({ favorited: false });
     });
   }
 
@@ -58,6 +98,9 @@ export default class HomePage extends React.Component {
                   <Image height="30px" width="30px" src="/currencyIcon.png" />
                   {this.state.listing.price || 'N\\A'}
                 </ListGroup.Item>
+                {this.state.favorited && (
+                  <ListGroup.Item>Favorited</ListGroup.Item>
+                )}
               </ListGroup>
             </div>
           </center>
@@ -65,9 +108,30 @@ export default class HomePage extends React.Component {
           <Jumbotron>
             <h1>{this.state.listing.title || 'No title given.'}</h1>
             <h6>{this.state.listing.price || 'No price given.'}</h6>
-            <p>{this.state.listing.description || 'No description given.'}</p>
+            <p>
+              {this.state.msg}
+              {this.state.listing.description || 'No description given.'}
+            </p>
             <p>
               <Button variant="primary">Contact</Button>
+              {this.state.user && !this.state.favorited && (
+                <Button
+                  className="ml-3"
+                  variant="primary"
+                  onClick={this.handleFavorite}
+                >
+                  Favorite this listing
+                </Button>
+              )}
+              {this.state.user && this.state.favorited && (
+                <Button
+                  className="ml-3"
+                  variant="primary"
+                  onClick={this.handleUnfavorite}
+                >
+                  Unfavorite this listing
+                </Button>
+              )}
             </p>
           </Jumbotron>
         </div>

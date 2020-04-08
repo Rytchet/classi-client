@@ -4,6 +4,8 @@ export const userService = {
   login,
   logout,
   register,
+  favorite,
+  unfavorite,
 };
 
 function login(email, password) {
@@ -39,4 +41,24 @@ function register(name, email, password) {
       localStorage.setItem('user', JSON.stringify(user));
       return user;
     });
+}
+
+function favorite(listingId, token) {
+  return axios({
+    method: 'put',
+    url: '/users/favorites/' + listingId,
+    headers: { 'x-auth-token': token },
+  }).then(res => {
+    return res;
+  });
+}
+
+function unfavorite(listingId, token) {
+  return axios({
+    method: 'delete',
+    url: '/users/favorites/' + listingId,
+    headers: { 'x-auth-token': token },
+  }).then(res => {
+    return res;
+  });
 }
