@@ -37,11 +37,17 @@ class AppCarousel extends Component {
 
     return (
       <center>
-        <Carousel className="d-block w-40">
+        <Carousel
+          className="d-block w-40"
+          style={{ maxHeight: '400px', maxWidth: '680px' }}
+        >
           {this.state.listings.slice(0, 5).map(listing => (
             <Carousel.Item fade="true" key={listing._id}>
               <img
-                style={{ flex: 1, alignItems: 'center' }}
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                }}
                 className="d-block"
                 src="/testcar.png"
                 alt="First slide"
