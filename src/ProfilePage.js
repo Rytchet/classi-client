@@ -1,6 +1,6 @@
 import React from 'react';
 import AppNavbar from './components/AppNavbar';
-import { Image, Jumbotron, Container } from 'react-bootstrap';
+import { Image, Jumbotron, Container, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class ProfilePage extends React.Component {
@@ -36,7 +36,7 @@ export default class ProfilePage extends React.Component {
     const { localUser, user } = this.state;
 
     return (
-      <div bsPrefix=".bg-primary">
+      <div>
         <AppNavbar user={localUser} />
         <Jumbotron fluid>
           <Container>
@@ -51,7 +51,17 @@ export default class ProfilePage extends React.Component {
             </center>
             <br />
             <h1>{user.name}</h1>
-            <h3>Favourites: {user.favourites}</h3>
+            <h3>
+              Favourites:{' '}
+              {user.favourites || 'Oh no! You have no favourites...'}
+            </h3>
+            <p>{user.email}</p>
+            <center>
+              <p>
+                <Button variant="primary">Create Listing</Button>{' '}
+                <Button variant="primary">Edit Profile</Button>
+              </p>
+            </center>
           </Container>
         </Jumbotron>
       </div>
