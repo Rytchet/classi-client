@@ -22,6 +22,7 @@ class AppNavbar extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <Nav.Link href="/login">{user ? 'Logout' : 'Login'}</Nav.Link>
+              {!user && <Nav.Link href="/register">Register</Nav.Link>}
               {user && <Nav.Link href="/profile">Profile</Nav.Link>}
             </Nav>
             <Form inline className="ml-auto">

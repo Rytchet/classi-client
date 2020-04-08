@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import AppNavbar from './components/AppNavbar';
-import { Link } from 'react-router-dom';
 
 import { userService } from './userService';
 
@@ -10,7 +9,7 @@ import { userService } from './userService';
 // Dont sue me
 // It has some nice error messages and shit, we can implement it maybe
 
-export default class LoginPage extends React.Component {
+export default class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -19,6 +18,7 @@ export default class LoginPage extends React.Component {
     this.state = {
       email: '',
       password: '',
+      name: '',
       loading: false,
       error: '',
     };
@@ -34,16 +34,16 @@ export default class LoginPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { email, password } = this.state;
+    const { email, password, name } = this.state;
 
     // Stop if form is invalid
-    if (!(email && password)) {
+    if (!(email && password && name)) {
       return;
     }
 
     this.setState({ loading: true });
 
-    userService.login(email, password).then(
+    userService.register(name, email, password).then(
       user => {
         const { from } = this.props.location.state || {
           from: { pathname: '/' },
@@ -57,13 +57,23 @@ export default class LoginPage extends React.Component {
   }
 
   render() {
-    const { email, password, loading, error } = this.state;
+    const { name, email, password, loading, error } = this.state;
     return (
       <div>
         <AppNavbar />
 
         <div className="container mt-5">
           <Form onSubmit={this.handleSubmit}>
+            <Form.Group controlid="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                autoFocus
+                type="text"
+                name="name"
+                value={name}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
             <Form.Group controlid="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -84,7 +94,7 @@ export default class LoginPage extends React.Component {
               />
             </Form.Group>
             <Button block disabled={loading} type="submit">
-              Login
+              Register
             </Button>
             {error && (
               <Alert className="mt-3" variant="danger">
@@ -92,7 +102,6 @@ export default class LoginPage extends React.Component {
               </Alert>
             )}
           </Form>
-          <Link to="/register">Don't have an account? Register here</Link>
         </div>
       </div>
     );
