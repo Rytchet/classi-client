@@ -48,15 +48,15 @@ export default class HomePage extends React.Component {
               <ListGroup horizontal>
                 <ListGroup.Item>
                   <Image height="30px" width="30px" src="/carIcon.png" />
-                  {this.state.listing.car.make}
+                  {this.state.listing.car.make || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Image height="30px" width="30px" src="/engineIcon.png" />
-                  {this.state.listing.car.mileage}
+                  {this.state.listing.car.mileage || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Image height="30px" width="30px" src="/currencyIcon.png" />
-                  {this.state.listing.price}
+                  {this.state.listing.price || 'N\\A'}
                 </ListGroup.Item>
               </ListGroup>
             </div>
