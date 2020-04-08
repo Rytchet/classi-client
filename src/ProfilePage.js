@@ -52,7 +52,11 @@ export default class ProfilePage extends React.Component {
             <br />
             <h1>{user.name}</h1>
             <h3>
+<<<<<<< HEAD
               Favorites: {user.favorites || 'Oh no! You have no favourites...'}
+=======
+              Favourites: {user.favorites || 'Oh no! You have no favourites...'}
+>>>>>>> 04c061f4e32c0994e476d1527b0c15ce57642adc
             </h3>
             <p>{user.email}</p>
             <center>
