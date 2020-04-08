@@ -2,6 +2,7 @@ import React from 'react';
 import AppNavbar from '../components/AppNavbar';
 import AppCarousel from '../components/AppCarousel';
 import Listings from '../components/Listings';
+import axios from 'axios';
 
 export class HomePage extends React.Component {
   constructor(props) {
@@ -9,22 +10,26 @@ export class HomePage extends React.Component {
 
     this.state = {
       user: {},
+      listings: [{ id: 'xd' }],
     };
   }
 
   componentDidMount() {
-    this.setState({
-      user: JSON.parse(localStorage.getItem('user')),
+    axios.get('/listings').then(res => {
+      this.setState(prevState => ({
+        listings: [...res.data],
+        user: JSON.parse(localStorage.getItem('user')),
+      }));
     });
   }
 
   render() {
-    const { user } = this.state;
+    let { user, listings } = this.state;
     return (
       <div>
         <AppNavbar user={user} />
         <AppCarousel />
-        <Listings />
+        <Listings listings={listings} />
       </div>
     );
   }

@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { Container, Card, CardColumns, Spinner } from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 class Listings extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      isLoaded: false,
+      isLoaded: true,
       listings: [],
     };
   }
 
-  componentDidMount() {
-    axios.get('/listings').then(res => {
+  componentDidUpdate(prevProps) {
+    if (prevProps.listings !== this.props.listings) {
       this.setState({
-        listings: res.data,
-        isLoaded: true,
+        listings: this.props.listings,
       });
-    });
+    }
   }
 
   render() {
