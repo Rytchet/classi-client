@@ -19,7 +19,7 @@ function App() {
 
         <Route path="/listing/:id" component={ListingPage} />
 
-        <PrivateRoute path="/" exact component={HomePage} />
+        <Route path="/" exact component={HomePage} />
 
         {/* TODO: 404 page 
           <Route component={NotFound}></Route> 
