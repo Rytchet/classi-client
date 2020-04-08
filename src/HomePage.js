@@ -23,7 +23,6 @@ export default class HomePage extends React.Component {
     return (
       <div>
         <AppNavbar user={user} />
-        <br />
         <AppCarousel />
         <Listings />
       </div>
