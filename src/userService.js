@@ -79,7 +79,7 @@ function createListing(
 
   return axios({
     method: 'post',
-    url: 'http://localhost:5000/api/listings',
+    url: '/listings',
     headers: { 'x-auth-token': token },
     data: {
       title,
