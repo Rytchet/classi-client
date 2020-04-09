@@ -16,7 +16,7 @@ export class SearchPage extends Component {
   }
 
   componentDidMount() {
-    let q = queryString.parse(this.props.location.search);
+    let q = queryString.parse(this.props.location.search).q;
     axios.get('/listings/search', { params: { q } }).then(res => {
       this.setState(prevState => ({
         listings: [...res.data],
