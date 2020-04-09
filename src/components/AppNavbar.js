@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 import { Form, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
 
 class AppNavbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      q: '',
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
   render() {
     const user = this.props.user || false;
+    const { q } = this.props;
 
     return (
       <div>
@@ -30,10 +46,17 @@ class AppNavbar extends Component {
                 <Nav.Link href="/createListing">Add your own listing</Nav.Link>
               )}
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-2" />
+            <Form inline action="/search">
+              <FormControl
+                type="text"
+                name="q"
+                value={q}
+                onChange={this.handleChange}
+                placeholder="Search"
+                className="mr-2"
+              />
               <br />
-              <Button variant="outline-info" className="">
+              <Button variant="outline-info" className="" type="submit">
                 Search
               </Button>
             </Form>
