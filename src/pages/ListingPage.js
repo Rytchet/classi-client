@@ -11,6 +11,9 @@ import {
   ListGroup,
   DropdownButton,
   Dropdown,
+  OverlayTrigger,
+  Tooltip,
+  Overlay,
 } from 'react-bootstrap';
 import { userService } from '../userService';
 
@@ -37,11 +40,10 @@ export class ListingPage extends React.Component {
         listing: res.data,
         user: JSON.parse(localStorage.getItem('user')),
         isLoaded: true,
-        
       });
-      
-      let images=[];
-      this.state.listing.photos.forEach((url) => {
+
+      let images = [];
+      this.state.listing.photos.forEach(url => {
         images.push({ original: url, thumbnail: url });
       });
       this.setState({ images });
@@ -79,7 +81,6 @@ export class ListingPage extends React.Component {
     });
   }
 
-
   render() {
     if (!this.state.isLoaded) {
       return (
@@ -91,7 +92,6 @@ export class ListingPage extends React.Component {
         </div>
       );
     }
-    
 
     return (
       <div key={this.state.listing._id}>
@@ -110,7 +110,7 @@ export class ListingPage extends React.Component {
                   {this.state.listing.car.make || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Image height="30px" width="30px" src="/engineIcon.png" />
+                  <Image height="30px" width="30px" src="/mileageIcon.png" />
                   {this.state.listing.car.mileage.toLocaleString(
                     navigator.language,
                     {
@@ -119,7 +119,12 @@ export class ListingPage extends React.Component {
                   ) || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Image height="30px" width="30px" src="/currencyIcon.png" />
+                  <Image
+                    ref="#img1"
+                    height="30px"
+                    width="30px"
+                    src="/currencyIcon.png"
+                  />
                   {this.state.listing.price.toLocaleString(navigator.language, {
                     minimumFractionDigits: 0,
                   }) || 'N\\A'}
@@ -137,7 +142,8 @@ export class ListingPage extends React.Component {
           <Jumbotron>
             <h1>{this.state.listing.title || 'No title given.'}</h1>
             <h6>
-              £{this.state.listing.price.toLocaleString(navigator.language, {
+              £
+              {this.state.listing.price.toLocaleString(navigator.language, {
                 minimumFractionDigits: 0,
               }) || 'No price given.'}
             </h6>
