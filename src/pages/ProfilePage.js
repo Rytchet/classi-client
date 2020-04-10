@@ -42,7 +42,7 @@ export class ProfilePage extends React.Component {
           <Container>
             <center>
               <Image
-                src={'https://classi-server.herokuapp.com' + user.avatar_url}
+                src={user.avatar_url}
                 height="250"
                 width="250"
                 alt="avatar"
@@ -57,7 +57,9 @@ export class ProfilePage extends React.Component {
             <p>{user.email}</p>
             <center>
               <p>
-                <Button variant="primary" href="/createListing">Create Listing</Button>{' '}
+                <Button variant="primary" href="/createListing">
+                  Create Listing
+                </Button>{' '}
                 <Button variant="primary">Edit Profile</Button>
               </p>
             </center>
