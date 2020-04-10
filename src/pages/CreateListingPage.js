@@ -78,7 +78,7 @@ export class CreateListingPage extends Component {
         this.props.history.push(from);
       })
       .catch(err => {
-        if (err.response.data.msg == 'Wrong postcode') {
+        if (err.response.data.msg === 'Wrong postcode') {
           this.setState({
             error: 'Postcode is not valid',
           });

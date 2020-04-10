@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import ImageGallery from 'react-image-gallery';
 import AppNavbar from '../components/AppNavbar';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import {
   Spinner,
   Image,
@@ -9,6 +11,9 @@ import {
   ListGroup,
   DropdownButton,
   Dropdown,
+  OverlayTrigger,
+  Tooltip,
+  Overlay,
 } from 'react-bootstrap';
 import { userService } from '../userService';
 
@@ -21,6 +26,7 @@ export class ListingPage extends React.Component {
       user: {},
       favorited: false,
       msg: '',
+      images: [],
     };
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleUnfavorite = this.handleUnfavorite.bind(this);
@@ -35,6 +41,12 @@ export class ListingPage extends React.Component {
         user: JSON.parse(localStorage.getItem('user')),
         isLoaded: true,
       });
+
+      let images = [];
+      this.state.listing.photos.forEach(url => {
+        images.push({ original: url, thumbnail: url });
+      });
+      this.setState({ images });
 
       if (this.state.user) {
         axios.get('/users/' + this.state.user.id).then(res => {
@@ -86,14 +98,10 @@ export class ListingPage extends React.Component {
         <AppNavbar user={this.state.user} />
         <div className="container mt-5">
           <center>
-            <Image
-              src={this.state.listing.photos[0]}
-              rounded
-              height="350"
-              width="550"
-            />
+            <ImageGallery items={this.state.images} />
           </center>
           <br />
+          {/* Here is the Card image this code is getting extremely long so I'm commenting sections */}
           <center>
             <div className="col-md-3 col-md-offset-3">
               <ListGroup horizontal>
@@ -102,13 +110,23 @@ export class ListingPage extends React.Component {
                   {this.state.listing.car.make || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Image height="30px" width="30px" src="/engineIcon.png" />
-                  {this.state.listing.car.mileage || 'N\\A'}
+                  <Image height="30px" width="30px" src="/mileageIcon.png" />
+                  {this.state.listing.car.mileage.toLocaleString(
+                    navigator.language,
+                    {
+                      minimumFractionDigits: 0,
+                    }
+                  ) || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Image height="30px" width="30px" src="/currencyIcon.png" />
+                  <Image
+                    ref="#img1"
+                    height="30px"
+                    width="30px"
+                    src="/currencyIcon.png"
+                  />
                   {this.state.listing.price.toLocaleString(navigator.language, {
-                    minimumFractionDigits: 2,
+                    minimumFractionDigits: 0,
                   }) || 'N\\A'}
                 </ListGroup.Item>
                 {this.state.favorited && (
@@ -123,7 +141,12 @@ export class ListingPage extends React.Component {
           <br />
           <Jumbotron style={{ whiteSpace: 'pre-wrap' }}>
             <h1>{this.state.listing.title || 'No title given.'}</h1>
-            <h6>{this.state.listing.price || 'No price given.'}</h6>
+            <h6>
+              £
+              {this.state.listing.price.toLocaleString(navigator.language, {
+                minimumFractionDigits: 0,
+              }) || 'No price given.'}
+            </h6>
             <p>
               {this.state.msg}
               {this.state.listing.description || 'No description given.'}
