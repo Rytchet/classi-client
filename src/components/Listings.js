@@ -47,7 +47,12 @@ class Listings extends Component {
                   <Card.Text>Click to view more details...</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <small className="text-muted">Price: {listing.price}</small>
+                  <small className="text-muted">
+                    Price:{' '}
+                    {listing.price.toLocaleString(navigator.language, {
+                      minimumFractionDigits: 2,
+                    })}
+                  </small>
                 </Card.Footer>
               </Card>
             </Link>

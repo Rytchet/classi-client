@@ -107,7 +107,9 @@ export class ListingPage extends React.Component {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Image height="30px" width="30px" src="/currencyIcon.png" />
-                  {this.state.listing.price || 'N\\A'}
+                  {this.state.listing.price.toLocaleString(navigator.language, {
+                    minimumFractionDigits: 2,
+                  }) || 'N\\A'}
                 </ListGroup.Item>
                 {this.state.favorited && (
                   <ListGroup.Item>
