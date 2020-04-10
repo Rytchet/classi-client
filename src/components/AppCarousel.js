@@ -42,6 +42,7 @@ class AppCarousel extends Component {
           {this.state.listings.slice(0, 5).map(listing => (
            
             <Carousel.Item fade="true" key={listing._id}>
+    {/* Just fixing my github account*/}
                <Link to={'/listing/' + listing._id} key={listing._id}>
                 <Image
                   style={{
