@@ -64,20 +64,24 @@ function unfavorite(listingId, token) {
   });
 }
 
-async function createListing(
-  title,
-  make,
-  model,
-  year,
-  mileage,
-  price,
-  description,
-  postcode,
-  formData
-) {
+async function createListing(state, formData) {
+  // Get the token for auth
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
 
+  // All of the variables from state
+  const {
+    title,
+    make,
+    model,
+    year,
+    mileage,
+    price,
+    description,
+    postcode,
+  } = state;
+
+  // Send the request
   return axios({
     method: 'post',
     url: '/listings',
@@ -96,21 +100,19 @@ async function createListing(
         postcode,
       },
     },
-  }).then(async res => {
+  }).then(async listing_res => {
+    // If there is no photos, don't send the 2nd request
     if (!formData.has('photos')) {
-      return res;
+      return listing_res;
     }
-    const id = res.data._id;
-    const res3 = await axios
-      .post('/images/listings/' + id, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'x-auth-token': token,
-        },
-      })
-      .then(res2 => {
-        return res;
-      });
-    return res3;
+    // Send the 2nd request
+    const id = listing_res.data._id;
+    await axios.post('/images/listings/' + id, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'x-auth-token': token,
+      },
+    });
+    return listing_res;
   });
 }

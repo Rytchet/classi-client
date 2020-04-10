@@ -43,17 +43,17 @@ export class LoginPage extends React.Component {
 
     this.setState({ loading: true });
 
-    userService.login(email, password).then(
-      user => {
+    userService
+      .login(email, password)
+      .then(user => {
         const { from } = this.props.location.state || {
           from: { pathname: '/' },
         };
         this.props.history.push(from);
-      },
-      error => {
-        this.setState({ error, loading: false });
-      }
-    );
+      })
+      .catch(err => {
+        this.setState({ error: err.response.data.msg });
+      });
   }
 
   render() {

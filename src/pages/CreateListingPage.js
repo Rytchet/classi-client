@@ -49,28 +49,18 @@ export class CreateListingPage extends Component {
       year,
       mileage,
       price,
-      description,
       postcode,
       images,
     } = this.state;
 
-    if (
-      !(
-        title &&
-        make &&
-        model &&
-        year &&
-        mileage &&
-        price &&
-        description &&
-        postcode
-      )
-    ) {
+    // Check all required fields
+    if (!(title && make && model && year && mileage && price && postcode)) {
       return;
     }
 
     this.setState({ loading: true });
 
+    // Get all the images
     let formData = new FormData();
     if (images) {
       images.forEach(image => {
@@ -78,18 +68,9 @@ export class CreateListingPage extends Component {
       });
     }
 
+    // Send the request
     userService
-      .createListing(
-        title,
-        make,
-        model,
-        year,
-        mileage,
-        price,
-        description,
-        postcode,
-        formData
-      )
+      .createListing(this.state, formData)
       .then(res => {
         const { from } = this.props.location.state || {
           from: { pathname: '/listing/' + res.data._id },
@@ -97,7 +78,11 @@ export class CreateListingPage extends Component {
         this.props.history.push(from);
       })
       .catch(err => {
-        console.log(err);
+        if (err.response.data.msg == 'Wrong postcode') {
+          this.setState({
+            error: 'Postcode is not valid',
+          });
+        }
         this.setState({ loading: false });
       });
   }
@@ -129,6 +114,7 @@ export class CreateListingPage extends Component {
                 name="title"
                 value={title}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -140,6 +126,7 @@ export class CreateListingPage extends Component {
                 name="make"
                 value={make}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -151,6 +138,7 @@ export class CreateListingPage extends Component {
                 name="model"
                 value={model}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -162,6 +150,7 @@ export class CreateListingPage extends Component {
                 name="year"
                 value={year}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -173,6 +162,7 @@ export class CreateListingPage extends Component {
                 name="mileage"
                 value={mileage}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -184,6 +174,7 @@ export class CreateListingPage extends Component {
                 name="price"
                 value={price}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
@@ -206,6 +197,7 @@ export class CreateListingPage extends Component {
                 name="postcode"
                 value={postcode}
                 onChange={this.handleChange}
+                required
               ></Form.Control>
             </Form.Group>
 
