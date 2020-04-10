@@ -38,8 +38,25 @@ class Listings extends Component {
           {this.state.listings.map(listing => (
             <Link to={'/listing/' + listing._id} key={listing._id}>
               <Card>
-                <Card.Img variant="top" src={listing.photos[0]} />
-                <Card.Body>
+                <div
+                  style={{
+                    position: 'relative',
+                    height: '180px',
+                    width: '100%',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Card.Img
+                    variant="top"
+                    style={{
+                      overflow: 'hidden',
+                      height: 'auto',
+                      width: '100%',
+                    }}
+                    src={listing.photos[0]}
+                  />
+                </div>
+                <Card.Body style={{ minHeight: '150px' }}>
                   <Card.Title>{listing.title}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
                     {listing.car.year} {listing.car.make} {listing.car.model}
