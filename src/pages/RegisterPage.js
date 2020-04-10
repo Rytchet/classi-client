@@ -43,17 +43,17 @@ export class RegisterPage extends React.Component {
 
     this.setState({ loading: true });
 
-    userService.register(name, email, password).then(
-      user => {
+    userService
+      .register(name, email, password)
+      .then(user => {
         const { from } = this.props.location.state || {
           from: { pathname: '/' },
         };
         this.props.history.push(from);
-      },
-      error => {
-        this.setState({ error, loading: false });
-      }
-    );
+      })
+      .catch(err => {
+        this.setState({ error: err.response.data.msg });
+      });
   }
 
   render() {
@@ -73,6 +73,7 @@ export class RegisterPage extends React.Component {
                 value={name}
                 placeholder="Your Name Here"
                 onChange={this.handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlid="email">
@@ -84,6 +85,7 @@ export class RegisterPage extends React.Component {
                 name="email"
                 value={email}
                 onChange={this.handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="password">
@@ -93,6 +95,7 @@ export class RegisterPage extends React.Component {
                 type="password"
                 name="password"
                 value={password}
+                required
                 onChange={this.handleChange}
               />
             </Form.Group>
