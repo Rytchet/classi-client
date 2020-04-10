@@ -72,9 +72,11 @@ export class CreateListingPage extends Component {
     this.setState({ loading: true });
 
     let formData = new FormData();
-    images.forEach(image => {
-      formData.append('photos', image);
-    });
+    if (images) {
+      images.forEach(image => {
+        formData.append('photos', image);
+      });
+    }
 
     userService
       .createListing(

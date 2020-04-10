@@ -97,6 +97,9 @@ async function createListing(
       },
     },
   }).then(async res => {
+    if (!formData.has('photos')) {
+      return res;
+    }
     const id = res.data._id;
     const res3 = await axios
       .post('/images/listings/' + id, formData, {
