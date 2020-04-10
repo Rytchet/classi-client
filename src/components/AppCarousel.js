@@ -40,10 +40,8 @@ class AppCarousel extends Component {
       <center>
         <Carousel className="d-block w-40">
           {this.state.listings.slice(0, 5).map(listing => (
-           
             <Carousel.Item fade="true" key={listing._id}>
-    
-               <Link to={'/listing/' + listing._id} key={listing._id}>
+              <Link to={'/listing/' + listing._id} key={listing._id}>
                 <Image
                   style={{
                     flex: 1,
@@ -51,7 +49,7 @@ class AppCarousel extends Component {
                   }}
                   rounded
                   className="d-block"
-                  src="/testcar.png"
+                  src={listing.photos[0]}
                   alt="First slide"
                   width="50%"
                 />

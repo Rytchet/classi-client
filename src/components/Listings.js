@@ -38,7 +38,7 @@ class Listings extends Component {
           {this.state.listings.map(listing => (
             <Link to={'/listing/' + listing._id} key={listing._id}>
               <Card>
-                <Card.Img variant="top" src="/testcar.png" />
+                <Card.Img variant="top" src={listing.photos[0]} />
                 <Card.Body>
                   <Card.Title>{listing.title}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">

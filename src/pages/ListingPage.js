@@ -1,7 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import AppNavbar from '../components/AppNavbar';
-import { Spinner, Image, Button, Jumbotron, ListGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import {
+  Spinner,
+  Image,
+  Button,
+  Jumbotron,
+  ListGroup,
+  DropdownButton,
+  Dropdown,
+} from 'react-bootstrap';
 import { userService } from '../userService';
 
 export class ListingPage extends React.Component {
@@ -78,7 +86,12 @@ export class ListingPage extends React.Component {
         <AppNavbar user={this.state.user} />
         <div className="container mt-5">
           <center>
-            <Image src="/testcar.png" rounded height="350" width="550" />
+            <Image
+              src={this.state.listing.photos[0]}
+              rounded
+              height="350"
+              width="550"
+            />
           </center>
           <br />
           <center>
@@ -98,12 +111,9 @@ export class ListingPage extends React.Component {
                 </ListGroup.Item>
                 {this.state.favorited && (
                   <ListGroup.Item>
-                  <Image
-                    height="30"
-                    width ="30"
-                    src='/star.svg'
-                ></Image>
-                    Favorited</ListGroup.Item>
+                    <Image height="30" width="30" src="/star.svg"></Image>
+                    Favorited
+                  </ListGroup.Item>
                 )}
               </ListGroup>
             </div>
@@ -118,50 +128,42 @@ export class ListingPage extends React.Component {
             </p>
             <p>
               <center>
-              <DropdownButton 
-                title="Contact Info"
-                variant="dark"
-                className="ml-3 left"  
-                size="lg"           
-              >
-                <Dropdown.Item 
-                  eventKey="1"
-                  href={"mailto:"+ this.state.listing.email}
+                <DropdownButton
+                  title="Contact Info"
+                  variant="dark"
+                  className="ml-3 left"
+                  size="lg"
+                >
+                  <Dropdown.Item
+                    eventKey="1"
+                    href={'mailto:' + this.state.listing.email}
                   >
-                  Email: {this.state.listing.email}
-                </Dropdown.Item>
-                <Dropdown.Item eventKey="2">Phone Number: {this.state.listing.phone || "N/A"}</Dropdown.Item>
-              </DropdownButton>
+                    Email: {this.state.listing.email}
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="2">
+                    Phone Number: {this.state.listing.phone || 'N/A'}
+                  </Dropdown.Item>
+                </DropdownButton>
               </center>
               {this.state.user && !this.state.favorited && (
                 <Button
-                size="sm"
-                variant=""
-                className="float-right"
-                onClick={this.handleFavorite}>
-                <Image
-                  height="30"
-                  width ="30"
-                  src='/star-outline.svg'
+                  size="sm"
+                  variant=""
+                  className="float-right"
+                  onClick={this.handleFavorite}
                 >
-                </Image>
+                  <Image height="30" width="30" src="/star-outline.svg"></Image>
                 </Button>
               )}
               {this.state.user && this.state.favorited && (
                 <Button
-                size="sm"
-                variant=""
-                className="float-right"
+                  size="sm"
+                  variant=""
+                  className="float-right"
                   onClick={this.handleUnfavorite}
                 >
-                Unfavourite this listing
-                <Image
-                  height="30"
-                  width ="30"
-                  src='/star.svg'
-                >
-                </Image>
-                  
+                  Unfavourite this listing
+                  <Image height="30" width="30" src="/star.svg"></Image>
                 </Button>
               )}
             </p>
