@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import AppNavbar from '../components/AppNavbar';
-import { Spinner, Image, Button, Jumbotron, ListGroup } from 'react-bootstrap';
+import { Spinner, Image, Button, Jumbotron, ListGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import { userService } from '../userService';
 
 export class ListingPage extends React.Component {
@@ -97,7 +97,13 @@ export class ListingPage extends React.Component {
                   {this.state.listing.price || 'N\\A'}
                 </ListGroup.Item>
                 {this.state.favorited && (
-                  <ListGroup.Item>Favorited</ListGroup.Item>
+                  <ListGroup.Item>
+                  <Image
+                    height="30"
+                    width ="30"
+                    src='/star.svg'
+                ></Image>
+                    Favorited</ListGroup.Item>
                 )}
               </ListGroup>
             </div>
@@ -111,23 +117,51 @@ export class ListingPage extends React.Component {
               {this.state.listing.description || 'No description given.'}
             </p>
             <p>
-              <Button variant="primary">Contact</Button>
+              <center>
+              <DropdownButton 
+                title="Contact Info"
+                variant="dark"
+                className="ml-3 left"  
+                size="lg"           
+              >
+                <Dropdown.Item 
+                  eventKey="1"
+                  href={"mailto:"+ this.state.listing.email}
+                  >
+                  Email: {this.state.listing.email}
+                </Dropdown.Item>
+                <Dropdown.Item eventKey="2">Phone Number: {this.state.listing.phone || "N/A"}</Dropdown.Item>
+              </DropdownButton>
+              </center>
               {this.state.user && !this.state.favorited && (
                 <Button
-                  className="ml-3"
-                  variant="primary"
-                  onClick={this.handleFavorite}
+                size="sm"
+                variant=""
+                className="float-right"
+                onClick={this.handleFavorite}>
+                <Image
+                  height="30"
+                  width ="30"
+                  src='/star-outline.svg'
                 >
-                  Favorite this listing
+                </Image>
                 </Button>
               )}
               {this.state.user && this.state.favorited && (
                 <Button
-                  className="ml-3"
-                  variant="primary"
+                size="sm"
+                variant=""
+                className="float-right"
                   onClick={this.handleUnfavorite}
                 >
-                  Unfavorite this listing
+                Unfavourite this listing
+                <Image
+                  height="30"
+                  width ="30"
+                  src='/star.svg'
+                >
+                </Image>
+                  
                 </Button>
               )}
             </p>

@@ -65,9 +65,7 @@ class AppCarousel extends Component {
                   {listing.times_viewed}
                 </p>
               </Carousel.Caption>
-              
             </Carousel.Item>
-            
           ))}
         </Carousel>
       </center>

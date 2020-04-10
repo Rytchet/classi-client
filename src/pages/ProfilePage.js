@@ -52,12 +52,12 @@ export class ProfilePage extends React.Component {
             <br />
             <h1>{user.name}</h1>
             <h3>
-              Favorites: {user.favorites || 'Oh no! You have no favourites...'}
+              Favourites: {user.favorites || 'Oh no! You have no favourites...'}
             </h3>
             <p>{user.email}</p>
             <center>
               <p>
-                <Button variant="primary">Create Listing</Button>{' '}
+                <Button variant="primary" href="/createListing">Create Listing</Button>{' '}
                 <Button variant="primary">Edit Profile</Button>
               </p>
             </center>
