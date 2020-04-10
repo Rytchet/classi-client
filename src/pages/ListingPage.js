@@ -121,7 +121,7 @@ export class ListingPage extends React.Component {
             </div>
           </center>
           <br />
-          <Jumbotron>
+          <Jumbotron style={{ whiteSpace: 'pre-wrap' }}>
             <h1>{this.state.listing.title || 'No title given.'}</h1>
             <h6>{this.state.listing.price || 'No price given.'}</h6>
             <p>
