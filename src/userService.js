@@ -64,7 +64,7 @@ function unfavorite(listingId, token) {
   });
 }
 
-function createListing(
+async function createListing(
   title,
   make,
   model,
@@ -72,7 +72,8 @@ function createListing(
   mileage,
   price,
   description,
-  postcode
+  postcode,
+  formData
 ) {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
@@ -95,7 +96,18 @@ function createListing(
         postcode,
       },
     },
-  }).then(res => {
-    return res;
+  }).then(async res => {
+    const id = res.data._id;
+    const res3 = await axios
+      .post('/images/listings/' + id, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'x-auth-token': token,
+        },
+      })
+      .then(res2 => {
+        return res;
+      });
+    return res3;
   });
 }

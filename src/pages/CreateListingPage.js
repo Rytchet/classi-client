@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppNavbar from '../components/AppNavbar';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { userService } from '../userService';
+import FormData from 'form-data';
 
 export class CreateListingPage extends Component {
   constructor(props) {
@@ -18,15 +19,24 @@ export class CreateListingPage extends Component {
       postcode: '',
       error: '',
       loading: false,
+      images: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleImages = this.handleImages.bind(this);
   }
 
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  }
+
+  handleImages(e) {
+    const files = Array.from(e.target.files);
+    this.setState({
+      images: files,
+    });
   }
 
   handleSubmit(e) {
@@ -41,6 +51,7 @@ export class CreateListingPage extends Component {
       price,
       description,
       postcode,
+      images,
     } = this.state;
 
     if (
@@ -60,6 +71,11 @@ export class CreateListingPage extends Component {
 
     this.setState({ loading: true });
 
+    let formData = new FormData();
+    images.forEach(image => {
+      formData.append('photos', image);
+    });
+
     userService
       .createListing(
         title,
@@ -69,11 +85,10 @@ export class CreateListingPage extends Component {
         mileage,
         price,
         description,
-        postcode
+        postcode,
+        formData
       )
       .then(res => {
-        console.log('xd');
-        console.log(res);
         const { from } = this.props.location.state || {
           from: { pathname: '/listing/' + res.data._id },
         };
@@ -192,13 +207,26 @@ export class CreateListingPage extends Component {
               ></Form.Control>
             </Form.Group>
 
+            <Form.File
+              label="Photos"
+              multiple
+              id="photos"
+              name="photos"
+              onChange={this.handleImages}
+            />
+
             {error && (
               <Alert className="mt-3" variant="danger">
                 {error}
               </Alert>
             )}
 
-            <Button block disabled={loading} type="submit">
+            <Button
+              block
+              disabled={loading}
+              type="submit"
+              className="mt-3 mb-5"
+            >
               Create the listing
             </Button>
           </Form>
