@@ -32,7 +32,7 @@ export class SearchPage extends Component {
       <div>
         <AppNavbar user={user} />
         {listings.length > 0 && <Listings listings={listings} />}
-        {listings.length == 0 && <h1>No listings found</h1>}
+        {listings.length === 0 && <h1>No listings found</h1>}
       </div>
     );
   }
