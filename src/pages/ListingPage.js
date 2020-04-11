@@ -32,13 +32,24 @@ export class ListingPage extends React.Component {
     this.handleUnfavorite = this.handleUnfavorite.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.setState({
+      user: JSON.parse(localStorage.getItem('user')),
+    });
+
+    let url = '';
+    if (this.state.user) {
+      url =
+        '/listings/' + this.props.match.params.id + '/' + this.state.user.id;
+    } else {
+      url = '/listings/' + this.props.match.params.id;
+    }
+
     // This code is retarded, i know, maybe I'll fix it later
     // It has to get the whole user to check if this listing is favorited
-    axios.get('/listings/' + this.props.match.params.id).then(res => {
+    axios.get(url).then(res => {
       this.setState({
         listing: res.data,
-        user: JSON.parse(localStorage.getItem('user')),
         isLoaded: true,
       });
 

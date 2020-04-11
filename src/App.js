@@ -17,6 +17,9 @@ import './components/styles/index.css';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://classi-server.herokuapp.com/api';
 
+// For debug
+// axios.defaults.baseURL = 'http://localhost:5000/api';
+
 function App() {
   return (
     <Router>
