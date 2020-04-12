@@ -42,17 +42,19 @@ class AppCarousel extends Component {
           {this.state.listings.slice(0, 5).map(listing => (
             <Carousel.Item fade="true" key={listing._id}>
               <Link to={'/listing/' + listing._id} key={listing._id}>
-                <Image
+                <a
                   style={{
-                    flex: 1,
-                    alignItems: 'center',
+                    overflow: 'hidden',
+                    height: 'auto',
+                    width: '100%',
+                    height: '750px',
+                    backgroundImage: `url(${listing.photos[0]})`,
+                    display: 'inline-block',
+                    backgroundPosition: '25% 25%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
                   }}
-                  rounded
-                  className="d-block"
-                  src={listing.photos[0]}
-                  alt="First slide"
-                  width="50%"
-                />
+                ></a>
               </Link>
               <Carousel.Caption>
                 <h3 href="#">
