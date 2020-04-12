@@ -2,10 +2,3 @@
 .carousel-control-prev {
   filter: invert(100%);
 }
-
-.carousel-inner img {
-  width: 80%;
-  position: relative;
-  overflow: hidden;
-  height: 440px; /* set arbitrary height*/
-}
