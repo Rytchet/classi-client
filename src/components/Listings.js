@@ -40,23 +40,17 @@ class Listings extends Component {
               <Card>
                 <div
                   style={{
-                    position: 'relative',
-                    height: '180px',
-                    width: '100%',
                     overflow: 'hidden',
+                    width: '100%',
+                    height: '200px',
+                    backgroundImage: `url(${listing.photos[0]})`,
+                    display: 'block',
+                    backgroundPosition: '50% 50%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
                   }}
-                >
-                  <Card.Img
-                    variant="top"
-                    style={{
-                      overflow: 'hidden',
-                      height: 'auto',
-                      width: '100%',
-                    }}
-                    src={listing.photos[0]}
-                  />
-                </div>
-                <Card.Body style={{ minHeight: '150px' }}>
+                ></div>
+                <Card.Body>
                   <Card.Title>{listing.title}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
                     {listing.car.year} {listing.car.make} {listing.car.model}
