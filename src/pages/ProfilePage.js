@@ -11,7 +11,8 @@ export class ProfilePage extends React.Component {
     this.state = {
       user: {},
       isLoaded: false,
-      listings: [],
+      favorites: [],
+      recommended: [],
     };
   }
 
@@ -37,12 +38,24 @@ export class ProfilePage extends React.Component {
           .get('/listings/' + id)
           .then(res => {
             this.setState({
-              listings: [...this.state.listings, res.data],
+              favorites: [...this.state.favorites, res.data],
             });
           })
           .catch(err => console.log(err));
       }.bind(this)
     );
+
+    console.log('xd');
+    await axios
+      .get('/listings/recommended/' + this.state.user._id)
+      .then(res => {
+        console.log('xd');
+        this.setState({
+          recommended: res.data,
+        });
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -68,8 +81,11 @@ export class ProfilePage extends React.Component {
             </center>
             <br />
             <h1>{user.name}</h1>
-            {this.state.listings.length > 0 && <h3>Your favourites:</h3>}
-            <Listings listings={this.state.listings} />
+            {this.state.favorites.length > 0 && <h3>Your favourites:</h3>}
+            <Listings listings={this.state.favorites} />
+
+            <h3>Recommended for you</h3>
+            <Listings listings={this.state.recommended} />
             <p>{user.email}</p>
             <center>
               <p>
