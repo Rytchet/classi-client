@@ -81,12 +81,13 @@ export class ProfilePage extends React.Component {
             </center>
             <br />
             <h1>{user.name}</h1>
+            <p>{user.email}</p>
             {this.state.favorites.length > 0 && <h3>Your favourites:</h3>}
             <Listings listings={this.state.favorites} />
 
             <h3>Recommended for you</h3>
             <Listings listings={this.state.recommended} />
-            <p>{user.email}</p>
+           
             <center>
               <p>
                 <Button variant="primary" href="/createListing">

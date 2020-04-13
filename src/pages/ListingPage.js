@@ -11,9 +11,6 @@ import {
   ListGroup,
   DropdownButton,
   Dropdown,
-  OverlayTrigger,
-  Tooltip,
-  Overlay,
 } from 'react-bootstrap';
 import { userService } from '../userService';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel, Spinner, Image } from 'react-bootstrap';
+import { Carousel, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './styles/AppCarousel.css';
