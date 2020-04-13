@@ -17,30 +17,43 @@ export class SearchPage extends Component {
       make: '',
       model: '',
       year: '',
+      changer: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
+  async handleChange(e) {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      let { make, model, year } = this.state;
+      axios
+        .get('/listings/search', {
+          params: { 'car.make': make, 'car.model': model, 'car.year': year },
+        })
+        .then(res => {
+          this.setState(prevState => ({
+            listings: [...res.data],
+            user: JSON.parse(localStorage.getItem('user')),
+          }));
+        });
+
+      axios
+        .get('/listings/search', {
+          params: { 'car.make': make, 'car.model': model, 'car.year': year },
+        })
+        .then(res => {
+          this.setState(prevState => ({
+            listings: [...res.data],
+            user: JSON.parse(localStorage.getItem('user')),
+          }));
+        });
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let { make, model, year } = this.state;
-    axios
-      .get('/listings/search', {
-        params: { 'car.make': make, 'car.model': model, 'car.year': year },
-      })
-      .then(res => {
-        this.setState(prevState => ({
-          listings: [...res.data],
-          user: JSON.parse(localStorage.getItem('user')),
-        }));
-      });
   }
 
   componentDidMount() {
@@ -87,10 +100,6 @@ export class SearchPage extends Component {
               value={year}
               onChange={this.handleChange}
             ></Form.Control>
-
-            <Button type="submit" className="m-2">
-              Filter
-            </Button>
           </Form>
         </Container>
 
