@@ -63,15 +63,6 @@ class AppNavbar extends Component {
             </Form>
           </Navbar.Collapse>
         </Navbar>
-        <br />
-        {/* <Nav justify dark="true" variant="tabs">
-          <Nav.Item>
-            <Nav.Link href="/classical-cars">Classical Cars</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/">Trending</Nav.Link>
-          </Nav.Item>
-        </Nav> */}
       </div>
     );
   }
