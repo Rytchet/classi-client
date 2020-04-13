@@ -40,6 +40,7 @@ class AppNavbar extends Component {
               <Nav.Link href="/login">{user ? 'Logout' : 'Login'}</Nav.Link>
               {!user && <Nav.Link href="/register">Register</Nav.Link>}
               {user && <Nav.Link href="/profile">Profile</Nav.Link>}
+              <Nav.Link href="/About">About Us</Nav.Link>
             </Nav>
             <Nav>
               {user && (
