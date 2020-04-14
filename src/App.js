@@ -9,6 +9,7 @@ import {
   SearchPage,
   AboutPage,
   EditProfilePage,
+  EditListingPage,
 } from './pages/index.js';
 import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -31,6 +32,8 @@ function App() {
         <Route path="/register" exact component={RegisterPage} />
 
         <Route path="/listing/:id" component={ListingPage} />
+
+        <Route path="/editListing/:id" component={EditListingPage} />
 
         <Route path="/search" component={SearchPage} />
 

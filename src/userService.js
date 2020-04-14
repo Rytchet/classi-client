@@ -9,6 +9,7 @@ export const userService = {
   createListing,
   uploadProfilePicture,
   updateUser,
+  updateListing,
 };
 
 function login(email, password) {
@@ -85,6 +86,32 @@ function updateUser(name) {
   return axios.put(
     '/users/' + user.id,
     { name },
+    {
+      headers: {
+        'x-auth-token': token,
+      },
+    }
+  );
+}
+
+function updateListing(state) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.token;
+
+  const {
+    title,
+    make,
+    model,
+    year,
+    mileage,
+    price,
+    description,
+    listing_id,
+  } = state;
+
+  return axios.put(
+    '/listings/' + listing_id,
+    { title, description, price, car: { make, mileage, model, year } },
     {
       headers: {
         'x-auth-token': token,

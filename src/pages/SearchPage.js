@@ -75,37 +75,37 @@ export class SearchPage extends Component {
         <br />
         <center>
           <h1> Search...</h1>
-        
-        <Container>
-          <Form onSubmit={this.handleSubmit} className="form-inline">
-            <Form.Label className="m-2">Make</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Make"
-              name="make"
-              value={make}
-              onChange={this.handleChange}
-            ></Form.Control>
 
-            <Form.Label className="m-2">Model</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Model"
-              name="model"
-              value={model}
-              onChange={this.handleChange}
-            ></Form.Control>
+          <Container>
+            <Form onSubmit={this.handleSubmit} className="form-inline">
+              <Form.Label className="m-2">Make</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Make"
+                name="make"
+                value={make}
+                onChange={this.handleChange}
+              ></Form.Control>
 
-            <Form.Label className="m-2">Year</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Year"
-              name="year"
-              value={year}
-              onChange={this.handleChange}
-            ></Form.Control>
-          </Form>
-        </Container>
+              <Form.Label className="m-2">Model</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Model"
+                name="model"
+                value={model}
+                onChange={this.handleChange}
+              ></Form.Control>
+
+              <Form.Label className="m-2">Year</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Year"
+                name="year"
+                value={year}
+                onChange={this.handleChange}
+              ></Form.Control>
+            </Form>
+          </Container>
         </center>
 
         {listings.length > 0 && <Listings listings={listings} />}
