@@ -44,23 +44,25 @@ export class ListingPage extends React.Component {
       url = '/listings/' + this.props.match.params.id;
     }
 
-    axios
-      .get('/listings/recommended/' + this.state.user.id)
-      .then(res => {
-        this.setState({
-          recommended: res.data,
+    if (this.state.user) {
+      axios
+        .get('/listings/recommended/' + this.state.user.id)
+        .then(res => {
+          this.setState({
+            recommended: res.data,
+          });
+        })
+        .catch(err => {
+          console.log(err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    }
 
     // This code is retarded, i know, maybe I'll fix it later
     // It has to get the whole user to check if this listing is favorited
     await axios.get(url).then(res => {
       console.log(res.data);
       this.setState({
-        listing: res.data.listing,
+        listing: res.data,
         isLoaded: true,
       });
 
@@ -147,8 +149,8 @@ export class ListingPage extends React.Component {
                   }) || 'N\\A'}
                 </ListGroup.Item>
                 {this.state.favorited && (
-                  <ListGroup.Item >
-                    <Image height="30" width="30"src="/star.svg"></Image>
+                  <ListGroup.Item>
+                    <Image height="30" width="30" src="/star.svg"></Image>
                     Favourited
                   </ListGroup.Item>
                 )}
@@ -187,14 +189,15 @@ export class ListingPage extends React.Component {
                   </Dropdown.Item>
                 </DropdownButton>
               </center>
-              {this.state.user.id == this.state.listing.user_id && (
-                <Button
-                  className="float-right"
-                  href={`/editListing/${this.state.listing._id}`}
-                >
-                  Edit this listing
-                </Button>
-              )}
+              {this.state.user &&
+                this.state.user.id == this.state.listing.user_id && (
+                  <Button
+                    className="float-right"
+                    href={`/editListing/${this.state.listing.id}`}
+                  >
+                    Edit this listing
+                  </Button>
+                )}
               {this.state.user && !this.state.favorited && (
                 <Button
                   size="sm"
