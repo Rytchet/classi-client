@@ -67,6 +67,7 @@ class Listings extends Component {
                       {listing.price.toLocaleString(navigator.language, {
                         minimumFractionDigits: 2,
                       })}
+                      <p className="float-right"><img height="20px"src="/eye-outline.svg"></img> Times Viewed: {listing.times_viewed}</p>
                     </b>
                   </div>
                 </div>
