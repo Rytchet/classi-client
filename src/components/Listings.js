@@ -34,6 +34,47 @@ class Listings extends Component {
 
     return (
       <Container className="mt-5">
+        {this.state.listings.map(listing => (
+          <Link to={'/listing/' + listing._id} key={listing._id}>
+            <div class="container py-2">
+              <div class="card flex-row">
+                <img
+                  style={{
+                    overflow: 'hidden',
+                    width: '25%',
+                    height: '100%',
+                    backgroundImage: `url(${listing.photos[0]})`,
+                    display: 'block',
+                    backgroundPosition: '50% 50%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                  }}
+                  class="fluid-image rounded-left"
+                  src={listing.photos[0]}
+                  alt="Card image cap"
+                />
+                <div class="d-flex flex-column flex-grow-1">
+                  <div class="card-body w-40">
+                    <h5 class="card-title">{listing.title}</h5>
+                    <h3 class="card-text">
+                      {listing.car.year} {listing.car.make} {listing.car.model}
+                    </h3>
+                    <hr />
+                    <b class=".bg-light-gray">
+                      £
+                      {listing.price.toLocaleString(navigator.language, {
+                        minimumFractionDigits: 2,
+                      })}
+                    </b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+        {
+          // pls read just incase --> Might want to save these and put them into a different file for favourites.
+        }
         <CardColumns>
           {this.state.listings.map(listing => (
             <Link to={'/listing/' + listing._id} key={listing._id}>
@@ -50,13 +91,7 @@ class Listings extends Component {
                     backgroundSize: 'cover',
                   }}
                 ></div>
-                <Card.Body>
-                  <Card.Title>{listing.title}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    {listing.car.year} {listing.car.make} {listing.car.model}
-                  </Card.Subtitle>
-                  <Card.Text>Click to view more details...</Card.Text>
-                </Card.Body>
+
                 <Card.Footer>
                   <small className="text-muted">
                     Price:{' '}
