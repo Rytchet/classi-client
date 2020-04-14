@@ -146,8 +146,8 @@ export class ListingPage extends React.Component {
                   }) || 'N\\A'}
                 </ListGroup.Item>
                 {this.state.favorited && (
-                  <ListGroup.Item>
-                    <Image height="30" width="30" src="/star.svg"></Image>
+                  <ListGroup.Item >
+                    <Image height="30" width="30"src="/star.svg"></Image>
                     Favourited
                   </ListGroup.Item>
                 )}

@@ -85,27 +85,26 @@ export class ProfilePage extends React.Component {
                 alt="avatar"
                 roundedCircle
               ></Image>
-
+              <center>
+                <br />
+                <p>
+                  <Button variant="dark" href="/createListing">
+                    Create Listing
+                  </Button>{' '}
+                  <Button variant="dark" href="/editProfile">
+                    Edit Profile
+                  </Button>
+                </p>
+              </center>
               <br />
               <h1>{user.name}</h1>
               <p>{user.email}</p>
             </center>
-            {this.state.favorites.length > 0 && <h3>Your favourites:</h3>}
+            {this.state.favorites.length > 0 && <h3>Your favourites</h3>}
             <CardListings listings={this.state.favorites} />
 
             <h3>Recommended for you</h3>
             <CardListings listings={this.state.recommended} />
-
-            <center>
-              <p>
-                <Button variant="primary" href="/createListing">
-                  Create Listing
-                </Button>{' '}
-                <Button variant="primary" href="/editProfile">
-                  Edit Profile
-                </Button>
-              </p>
-            </center>
           </Container>
         </Jumbotron>
       </div>
