@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
-
+import './styles/AppNavbar.css';
+import { withRouter } from 'react-router-dom';
 class AppNavbar extends Component {
   constructor(props) {
     super(props);
@@ -23,28 +24,34 @@ class AppNavbar extends Component {
 
     return (
       <div>
-        <Navbar bg="dark" variant="dark" expand="sm">
-          <Navbar.Brand href="/">
+        <Navbar className="color-nav" bg="dark" expand="sm">
+          <Navbar.Brand style={{ color: 'white' }} href="/">
             <img
               alt=""
               src="/classi.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
+              
             />{' '}
             Classi
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/login">{user ? 'Logout' : 'Login'}</Nav.Link>
-              {!user && <Nav.Link href="/register">Register</Nav.Link>}
-              {user && <Nav.Link href="/profile">Profile</Nav.Link>}
-              <Nav.Link href="/About">About Us</Nav.Link>
+              <Nav.Link style={{ color: 'white' }} href="/">Home</Nav.Link>
+              <Nav.Link style={{ color: 'white' }} href="/login">
+                {user ? 'Logout' : 'Login'}
+              </Nav.Link>
+              {!user && <Nav.Link style={{ color: 'white' }} href="/register">Register</Nav.Link>}
+              {user && <Nav.Link style={{ color: 'white' }} href="/profile">Profile</Nav.Link>}
+              <Nav.Link style={{ color: 'white' }} href="/About">
+                About Us
+              </Nav.Link>
             </Nav>
             <Nav>
               {user && (
-                <Nav.Link href="/createListing">Add your own listing</Nav.Link>
+                <Nav.Link style={{ color: 'white' }} href="/createListing">Add your own listing</Nav.Link>
               )}
             </Nav>
             <Form inline action="/search">

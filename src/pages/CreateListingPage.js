@@ -104,6 +104,10 @@ export class CreateListingPage extends Component {
       <div>
         <AppNavbar user={localStorage.getItem('user')} />
         <Container>
+          <br/>
+          <center>
+            <h1>Create your own listing</h1>
+          </center>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group>
               <Form.Label>Title of your listing</Form.Label>

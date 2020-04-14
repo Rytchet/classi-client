@@ -63,6 +63,9 @@ export class RegisterPage extends React.Component {
         <AppNavbar />
 
         <div className="container mt-5">
+          <center>
+            <h1>Hello, please register your account!</h1>
+          </center>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlid="name">
               <Form.Label>Name</Form.Label>

@@ -195,7 +195,6 @@ export class ListingPage extends React.Component {
                   className="float-right"
                   onClick={this.handleUnfavorite}
                 >
-                  Unfavourite this listing
                   <Image height="30" width="30" src="/star.svg"></Image>
                 </Button>
               )}
