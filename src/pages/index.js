@@ -6,3 +6,4 @@ export * from './RegisterPage.js';
 export * from './CreateListingPage.js';
 export * from './SearchPage.js';
 export * from './AboutPage.js';
+export * from './EditProfilePage.js';

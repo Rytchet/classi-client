@@ -7,6 +7,8 @@ export const userService = {
   favorite,
   unfavorite,
   createListing,
+  uploadProfilePicture,
+  updateUser,
 };
 
 function login(email, password) {
@@ -62,6 +64,33 @@ function unfavorite(listingId, token) {
   }).then(res => {
     return res;
   });
+}
+
+async function uploadProfilePicture(formData) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.token;
+
+  return await axios.post('/images/avatars/', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'x-auth-token': token,
+    },
+  });
+}
+
+function updateUser(name) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.token;
+
+  return axios.put(
+    '/users/' + user.id,
+    { name },
+    {
+      headers: {
+        'x-auth-token': token,
+      },
+    }
+  );
 }
 
 async function createListing(state, formData) {

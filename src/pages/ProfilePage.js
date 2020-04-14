@@ -10,6 +10,7 @@ export class ProfilePage extends React.Component {
 
     this.state = {
       user: {},
+      localUser: JSON.parse(localStorage.getItem('user')),
       isLoaded: false,
       favorites: [],
       recommended: [],
@@ -25,7 +26,6 @@ export class ProfilePage extends React.Component {
         this.setState({
           isLoaded: true,
           user: res.data,
-          localUser,
         });
       })
       .catch(err => console.log(err));
@@ -84,7 +84,7 @@ export class ProfilePage extends React.Component {
               ></Image>
             </center>
             <br />
-            <h1>{user.name}</h1>
+            <h1>{localUser.name}</h1>
             <p>{user.email}</p>
             {this.state.favorites.length > 0 && <h3>Your favourites:</h3>}
             <CardListings listings={this.state.favorites} />
@@ -97,7 +97,9 @@ export class ProfilePage extends React.Component {
                 <Button variant="primary" href="/createListing">
                   Create Listing
                 </Button>{' '}
-                <Button variant="primary">Edit Profile</Button>
+                <Button variant="primary" href="/editProfile">
+                  Edit Profile
+                </Button>
               </p>
             </center>
           </Container>

@@ -8,6 +8,7 @@ import {
   CreateListingPage,
   SearchPage,
   AboutPage,
+  EditProfilePage,
 } from './pages/index.js';
 import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -16,10 +17,10 @@ import './components/styles/index.css';
 
 // Set up axios
 import axios from 'axios';
-axios.defaults.baseURL = 'https://classi-server.herokuapp.com/api';
+// axios.defaults.baseURL = 'https://classi-server.herokuapp.com/api';
 
 // For debug
-// axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
 
         <PrivateRoute path="/profile" exact component={ProfilePage} />
 
+        <PrivateRoute path="/editProfile" exact component={EditProfilePage} />
+
         <PrivateRoute
           path="/createListing"
           exact
@@ -45,10 +48,6 @@ function App() {
 
         {/* For now 404 goes to the main page */}
         <Route path="/" component={HomePage} />
-
-        {/* TODO: 404 page 
-          <Route component={NotFound}></Route> 
-          */}
       </Switch>
     </Router>
   );
