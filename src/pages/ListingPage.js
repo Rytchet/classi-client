@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ImageGallery from 'react-image-gallery';
 import AppNavbar from '../components/AppNavbar';
+import CardListings from '../components/CardListings';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import {
   Spinner,
@@ -24,6 +25,7 @@ export class ListingPage extends React.Component {
       favorited: false,
       msg: '',
       images: [],
+      recommended: [],
     };
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleUnfavorite = this.handleUnfavorite.bind(this);
@@ -41,6 +43,17 @@ export class ListingPage extends React.Component {
     } else {
       url = '/listings/' + this.props.match.params.id;
     }
+
+    axios
+      .get('/listings/recommended/' + this.state.user.id)
+      .then(res => {
+        this.setState({
+          recommended: res.data,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     // This code is retarded, i know, maybe I'll fix it later
     // It has to get the whole user to check if this listing is favorited
@@ -127,12 +140,7 @@ export class ListingPage extends React.Component {
                   ) || 'N\\A'}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Image
-                    ref="#img1"
-                    height="30px"
-                    width="30px"
-                    src="/currencyIcon.png"
-                  />
+                  <Image height="30px" width="30px" src="/currencyIcon.png" />
                   {this.state.listing.price.toLocaleString(navigator.language, {
                     minimumFractionDigits: 0,
                   }) || 'N\\A'}
@@ -201,6 +209,12 @@ export class ListingPage extends React.Component {
               )}
             </p>
           </Jumbotron>
+          {this.state.recommended && (
+            <div>
+              <h3>Recommended for you</h3>
+              <CardListings listings={this.state.recommended} />
+            </div>
+          )}
         </div>
       </div>
     );

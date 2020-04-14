@@ -45,7 +45,6 @@ export class ProfilePage extends React.Component {
       }.bind(this)
     );
 
-    console.log('xd');
     axios
       .get('/listings/recommended/' + this.state.user._id)
       .then(res => {
@@ -57,7 +56,6 @@ export class ProfilePage extends React.Component {
         console.log(res);
       })
       .catch(err => {
-        console.log('err');
         console.log(err);
       });
   }
