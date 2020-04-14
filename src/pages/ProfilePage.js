@@ -2,7 +2,7 @@ import React from 'react';
 import AppNavbar from '../components/AppNavbar';
 import { Image, Jumbotron, Container, Button } from 'react-bootstrap';
 import axios from 'axios';
-import Listings from '../components/Listings';
+import CardListings from '../components/CardListings';
 
 export class ProfilePage extends React.Component {
   constructor(props) {
@@ -46,16 +46,20 @@ export class ProfilePage extends React.Component {
     );
 
     console.log('xd');
-    await axios
+    axios
       .get('/listings/recommended/' + this.state.user._id)
       .then(res => {
-        console.log('xd');
+        console.log('res');
+        console.log(res);
         this.setState({
           recommended: res.data,
         });
         console.log(res);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log('err');
+        console.log(err);
+      });
   }
 
   render() {
@@ -83,11 +87,11 @@ export class ProfilePage extends React.Component {
             <h1>{user.name}</h1>
             <p>{user.email}</p>
             {this.state.favorites.length > 0 && <h3>Your favourites:</h3>}
-            <Listings listings={this.state.favorites} />
+            <CardListings listings={this.state.favorites} />
 
             <h3>Recommended for you</h3>
-            <Listings listings={this.state.recommended} />
-           
+            <CardListings listings={this.state.recommended} />
+
             <center>
               <p>
                 <Button variant="primary" href="/createListing">
