@@ -1,0 +1,11 @@
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+.carouselObject {
+  max-width: 100% !important;
+  width: 50%;
+  min-height: 25vh !important;
+  max-height: 75vh;
+  border-radius: 8px;
+}

@@ -33,7 +33,9 @@ class Listings extends Component {
     }
 
     return (
+    
       <Container className="mt-5">
+       
         {this.state.listings.map(listing => (
           <Link to={'/listing/' + listing._id} key={listing._id}>
             <div class="container py-2">
@@ -73,9 +75,9 @@ class Listings extends Component {
           </Link>
         ))}
         {
-          // pls read just incase --> Might want to save these and put them into a different file for favourites.
-        }
-        {/* <CardColumns>
+          /* nMight want to save these and put them into a different file for favourites.
+        
+        <CardColumns>
           {this.state.listings.map(listing => (
             <Link to={'/listing/' + listing._id} key={listing._id}>
               <Card>
@@ -103,7 +105,7 @@ class Listings extends Component {
               </Card>
             </Link>
           ))}
-        </CardColumns> */}
+        </CardColumns>*/}
       </Container>
     );
   }

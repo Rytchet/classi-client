@@ -11,6 +11,7 @@ export class HomePage extends React.Component {
     this.state = {
       user: {},
       listings: [{ id: 'xd' }],
+      
     };
   }
 

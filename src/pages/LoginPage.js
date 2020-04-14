@@ -63,6 +63,11 @@ export class LoginPage extends React.Component {
         <AppNavbar />
 
         <div className="container mt-5">
+          <center>
+            <h1>
+              Welcome Back!
+            </h1>
+          </center>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlid="email">
               <Form.Label>Email</Form.Label>

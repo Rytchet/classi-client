@@ -71,6 +71,11 @@ export class ProfilePage extends React.Component {
       <div>
         <AppNavbar user={localUser} />
         <Jumbotron fluid>
+          <center>
+            {' '}
+            <h1>Welcome back, {user.name}. </h1>
+          </center>
+
           <Container>
             <center>
               <Image
@@ -80,15 +85,16 @@ export class ProfilePage extends React.Component {
                 alt="avatar"
                 roundedCircle
               ></Image>
+
+              <br />
+              <h1>{user.name}</h1>
+              <p>{user.email}</p>
             </center>
-            <br />
-            <h1>{localUser.name}</h1>
-            <p>{user.email}</p>
             {this.state.favorites.length > 0 && <h3>Your favourites:</h3>}
             <CardListings listings={this.state.favorites} />
 
             <h3>Recommended for you</h3>
-            <CardListings listings={this.state.recommended} />
+            <Listings listings={this.state.recommended} />
 
             <center>
               <p>

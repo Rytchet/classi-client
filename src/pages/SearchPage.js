@@ -72,6 +72,10 @@ export class SearchPage extends Component {
     return (
       <div>
         <AppNavbar user={user} />
+        <br />
+        <center>
+          <h1> Search...</h1>
+        
         <Container>
           <Form onSubmit={this.handleSubmit} className="form-inline">
             <Form.Label className="m-2">Make</Form.Label>
@@ -102,6 +106,7 @@ export class SearchPage extends Component {
             ></Form.Control>
           </Form>
         </Container>
+        </center>
 
         {listings.length > 0 && <Listings listings={listings} />}
         {listings.length === 0 && <h1>No listings found</h1>}

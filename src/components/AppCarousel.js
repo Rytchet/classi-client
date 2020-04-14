@@ -3,6 +3,7 @@ import { Carousel, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './styles/AppCarousel.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class AppCarousel extends Component {
   constructor(props) {
@@ -38,26 +39,28 @@ class AppCarousel extends Component {
 
     return (
       <center>
-        <Carousel className="d-block w-40">
+        <Carousel>
           {this.state.listings.slice(0, 5).map(listing => (
             <Carousel.Item fade="true" key={listing._id}>
+              <br />
               <Link to={'/listing/' + listing._id} key={listing._id}>
-                <a
-                  style={{
+                <img
+                  rounded
+                  class="carouselObject"
+                  src={listing.photos[0]}
+                  alt={listing.title}
+                  /* style={{
                     overflow: 'hidden',
-                    height: 'auto',
-                    width: '100%',
-                    height: '750px',
                     backgroundImage: `url(${listing.photos[0]})`,
                     display: 'inline-block',
-                    backgroundPosition: '25% 25%',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                  }}
-                ></a>
+                    backgroundSize:'100% 100%',
+                    backgroundImage: '100% 100%',
+                  }}*/
+                />
               </Link>
               <Carousel.Caption>
-                <h3 href="#">
+                <h3 className="carouselText" href="#">
                   {listing.car.year} {listing.car.make} {listing.car.model}
                 </h3>
                 <p>
