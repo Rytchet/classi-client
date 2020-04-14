@@ -57,9 +57,10 @@ export class ListingPage extends React.Component {
 
     // This code is retarded, i know, maybe I'll fix it later
     // It has to get the whole user to check if this listing is favorited
-    axios.get(url).then(res => {
+    await axios.get(url).then(res => {
+      console.log(res.data);
       this.setState({
-        listing: res.data,
+        listing: res.data.listing,
         isLoaded: true,
       });
 
@@ -186,6 +187,14 @@ export class ListingPage extends React.Component {
                   </Dropdown.Item>
                 </DropdownButton>
               </center>
+              {this.state.user.id == this.state.listing.user_id && (
+                <Button
+                  className="float-right"
+                  href={`/editListing/${this.state.listing._id}`}
+                >
+                  Edit this listing
+                </Button>
+              )}
               {this.state.user && !this.state.favorited && (
                 <Button
                   size="sm"

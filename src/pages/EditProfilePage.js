@@ -53,8 +53,6 @@ export class EditProfilePage extends Component {
     await userService
       .updateUser(this.state.name)
       .then(res => {
-        console.log('HIR');
-        console.log(res);
         let user = JSON.parse(localStorage.getItem('user'));
         user.name = res.data.name;
         localStorage.setItem('user', JSON.stringify(user));
