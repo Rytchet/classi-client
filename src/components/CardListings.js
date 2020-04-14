@@ -55,7 +55,7 @@ class Listings extends Component {
 
                 <Card.Footer>
                   <small className="text-muted">
-                    Price:{' '}
+                    Price:{' '}£
                     {listing.price.toLocaleString(navigator.language, {
                       minimumFractionDigits: 2,
                     })}
