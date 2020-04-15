@@ -148,12 +148,6 @@ export class ListingPage extends React.Component {
                     minimumFractionDigits: 0,
                   }) || 'N\\A'}
                 </ListGroup.Item>
-                {this.state.favorited && (
-                  <ListGroup.Item>
-                    <Image height="30" width="30" src="/star.svg"></Image>
-                    Favourited
-                  </ListGroup.Item>
-                )}
               </ListGroup>
             </div>
           </center>
@@ -205,8 +199,11 @@ export class ListingPage extends React.Component {
                   className="float-right"
                   onClick={this.handleFavorite}
                 >
-                  <Image height="30" width="30" src="/star-outline.svg"></Image>
+                  <Image paddingRight="4px" height="30" width="30" src="/star-outline.svg"></Image>
+                  <br/>
+                  <b>Favourite</b>
                 </Button>
+                
               )}
               {this.state.user && this.state.favorited && (
                 <Button
@@ -215,7 +212,12 @@ export class ListingPage extends React.Component {
                   className="float-right"
                   onClick={this.handleUnfavorite}
                 >
+
+
                   <Image height="30" width="30" src="/star.svg"></Image>
+                  <br/>
+                  <b>Favourited</b>
+               
                 </Button>
               )}
             </p>

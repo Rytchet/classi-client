@@ -32,27 +32,47 @@ class AppNavbar extends Component {
               width="30"
               height="30"
               className="d-inline-block align-top"
-              
             />{' '}
             Classi
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link style={{ color: 'white' }} href="/">Home</Nav.Link>
-              <Nav.Link style={{ color: 'white' }} href="/login">
-                {user ? 'Logout' : 'Login'}
+              <Nav.Link style={{ color: 'white' }} href="/">
+                Home
               </Nav.Link>
-              {!user && <Nav.Link style={{ color: 'white' }} href="/register">Register</Nav.Link>}
-              {user && <Nav.Link style={{ color: 'white' }} href="/profile">Profile</Nav.Link>}
+              {user && (
+                <Nav.Link style={{ color: 'white' }} href="/profile#Favourites">
+                  Favourites
+                </Nav.Link>
+              )}
+
               <Nav.Link style={{ color: 'white' }} href="/About">
                 About Us
               </Nav.Link>
+
+              {!user && (
+                <Nav.Link style={{ color: 'white' }} href="/register">
+                  Register
+                </Nav.Link>
+              )}
             </Nav>
             <Nav>
               {user && (
-                <Nav.Link style={{ color: 'white' }} href="/createListing">Add your own listing</Nav.Link>
+                <Nav.Link style={{ color: 'white' }} href="/createListing">
+                  Create your own listing
+                </Nav.Link>
               )}
+            </Nav>
+            <Nav>
+              {user && (
+                <Nav.Link style={{ color: 'white' }} href="/profile">
+                  Profile
+                </Nav.Link>
+              )}
+              <Nav.Link style={{ color: 'white' }} href="/login">
+                {user ? 'Logout' : 'Login'}
+              </Nav.Link>
             </Nav>
             <Form inline action="/search">
               <FormControl

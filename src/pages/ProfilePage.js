@@ -101,7 +101,7 @@ export class ProfilePage extends React.Component {
               <p>{user.email}</p>
             </center>
             {this.state.favorites.length > 0 && <h3>Your favourites</h3>}
-            <CardListings listings={this.state.favorites} />
+            <CardListings href="#Favourites" listings={this.state.favorites} />
 
             <h3>Recommended for you</h3>
             <CardListings listings={this.state.recommended} />
