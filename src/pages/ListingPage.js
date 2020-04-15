@@ -187,7 +187,7 @@ export class ListingPage extends React.Component {
                 this.state.user.id == this.state.listing.user_id && (
                   <Button
                     className="float-right"
-                    href={`/editListing/${this.state.listing.id}`}
+                    href={`/editListing/${this.state.listing._id}`}
                   >
                     Edit this listing
                   </Button>
@@ -199,11 +199,15 @@ export class ListingPage extends React.Component {
                   className="float-right"
                   onClick={this.handleFavorite}
                 >
-                  <Image paddingRight="4px" height="30" width="30" src="/star-outline.svg"></Image>
-                  <br/>
+                  <Image
+                    paddingRight="4px"
+                    height="30"
+                    width="30"
+                    src="/star-outline.svg"
+                  ></Image>
+                  <br />
                   <b>Favourite</b>
                 </Button>
-                
               )}
               {this.state.user && this.state.favorited && (
                 <Button
@@ -212,12 +216,9 @@ export class ListingPage extends React.Component {
                   className="float-right"
                   onClick={this.handleUnfavorite}
                 >
-
-
                   <Image height="30" width="30" src="/star.svg"></Image>
-                  <br/>
+                  <br />
                   <b>Favourited</b>
-               
                 </Button>
               )}
             </p>
