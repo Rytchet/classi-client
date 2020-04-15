@@ -18,6 +18,10 @@ export class SearchPage extends Component {
       model: '',
       year: '',
       changer: false,
+      pricegt: '',
+      pricelt: '',
+      yeargt: '',
+      yearlt: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,10 +31,14 @@ export class SearchPage extends Component {
   async handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value }, () => {
-      let { make, model, year } = this.state;
+      let { make, model, year, yearlt, yeargt, pricegt, pricelt } = this.state;
       axios
-        .get('/listings/search', {
-          params: { 'car.make': make, 'car.model': model, 'car.year': year },
+        .put('/listings/search', {
+          'car.make': make,
+          'car.model': model,
+          'car.year': year,
+          'car.year': { $lt: yearlt, $gt: yeargt },
+          price: { $lt: pricelt, $gt: pricegt },
         })
         .then(res => {
           this.setState(prevState => ({
@@ -40,8 +48,12 @@ export class SearchPage extends Component {
         });
 
       axios
-        .get('/listings/search', {
-          params: { 'car.make': make, 'car.model': model, 'car.year': year },
+        .put('/listings/search', {
+          'car.make': make,
+          'car.model': model,
+          'car.year': year,
+          'car.year': { $lt: yearlt, $gt: yeargt },
+          price: { $lt: pricelt, $gt: pricegt },
         })
         .then(res => {
           this.setState(prevState => ({
@@ -58,7 +70,7 @@ export class SearchPage extends Component {
 
   componentDidMount() {
     let q = queryString.parse(this.props.location.search).q;
-    axios.get('/listings/search', { params: { q } }).then(res => {
+    axios.put('/listings/search', { q }).then(res => {
       this.setState(prevState => ({
         listings: [...res.data],
         user: JSON.parse(localStorage.getItem('user')),
@@ -67,7 +79,17 @@ export class SearchPage extends Component {
   }
 
   render() {
-    let { user, listings, make, model, year } = this.state;
+    let {
+      user,
+      listings,
+      make,
+      model,
+      year,
+      yearlt,
+      yeargt,
+      pricelt,
+      pricegt,
+    } = this.state;
 
     return (
       <div>
@@ -104,12 +126,52 @@ export class SearchPage extends Component {
                 value={year}
                 onChange={this.handleChange}
               ></Form.Control>
+
+              <Form.Label className="m-2">Price less than</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Price"
+                name="pricelt"
+                value={pricelt}
+                onChange={this.handleChange}
+              ></Form.Control>
+
+              <Form.Label className="m-2">Price greater than</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Price"
+                name="pricegt"
+                value={pricegt}
+                onChange={this.handleChange}
+              ></Form.Control>
+
+              <Form.Label className="m-2">Year greater than</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Year"
+                name="yeargt"
+                value={yeargt}
+                onChange={this.handleChange}
+              ></Form.Control>
+
+              <Form.Label className="m-2">Year less than</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Year"
+                name="yearlt"
+                value={yearlt}
+                onChange={this.handleChange}
+              ></Form.Control>
             </Form>
           </Container>
         </center>
 
         {listings.length > 0 && <Listings listings={listings} />}
-        {listings.length === 0 && <h1>No listings found</h1>}
+        {listings.length === 0 && (
+          <center>
+            <h1>No listings found</h1>
+          </center>
+        )}
       </div>
     );
   }
