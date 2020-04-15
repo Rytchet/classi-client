@@ -116,10 +116,11 @@ export class EditProfilePage extends Component {
             <Button
               block
               disabled={loading}
+              variant="dark"
               type="submit"
               className="mt-3 mb-5"
             >
-              Create the listing
+              Update Profile
             </Button>
           </Form>
         </Container>
