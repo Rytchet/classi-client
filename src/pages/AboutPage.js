@@ -23,24 +23,21 @@ export class AboutPage extends React.Component {
       <div>
         <AppNavbar user={user} />
         <Jumbotron fluid>
-          <Container>
+          <Container style={{paddingBottom: '140px'}}>
             <h1>Our Goal</h1>
-            <p>
-              Our goal is to get a good fucking grade on this project and a
-              chonky nice portfolio piece
-            </p>
+            <p>this is a generic ambitious goal that inspires people</p>
           </Container>
-        </Jumbotron>
-        <Jumbotron fluid>
-          <Container>
+   
+          <Container style={{paddingBottom: '140px'}}>
             <h1>Meet the team</h1>
             <p>heres the team: generic image of the team or description</p>
           </Container>
-        </Jumbotron>
-        <Jumbotron fluid>
-          <Container>
-            <h1>Something else</h1>
-            <p>This is some generic information about our website and team.</p>
+
+          <Container style={{paddingBottom: '140px'}}>
+            <h1>other title</h1>
+            <p>
+              This is some more generic information about our website and team.
+            </p>
           </Container>
         </Jumbotron>
       </div>
