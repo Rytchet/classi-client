@@ -1,7 +1,3 @@
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
 .page-container {
   display: flex !important;
   flex-direction: column !important;

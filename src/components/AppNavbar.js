@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, FormControl, Button, Nav, Navbar, Footer } from 'react-bootstrap';
+import { Form, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
 import './styles/AppNavbar.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { withRouter } from 'react-router-dom';
 class AppNavbar extends Component {
   constructor(props) {
@@ -105,9 +106,7 @@ class AppNavbar extends Component {
             )}
           </Navbar.Collapse>
         </Navbar>
-  
       </div>
-          
     );
   }
 }

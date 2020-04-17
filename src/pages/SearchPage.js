@@ -122,6 +122,7 @@ export class SearchPage extends Component {
         <Container>
           <center>
             <Jumbotron>
+              <h3>Filter Your Search</h3>
               <Form onSubmit={this.handleSubmit} className="form-inline">
                 <div>
                   <Row lg={true}>

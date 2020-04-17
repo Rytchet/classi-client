@@ -2,6 +2,7 @@ import React from 'react';
 import AppNavbar from '../components/AppNavbar';
 import { Jumbotron, Container, Button, Row, Col } from 'react-bootstrap';
 
+
 export class AboutPage extends React.Component {
   constructor(props) {
     super(props);
@@ -71,6 +72,7 @@ export class AboutPage extends React.Component {
             </Row>
           </Container>
         </Jumbotron>
+        
       </div>
     );
   }

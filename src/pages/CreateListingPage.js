@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AppNavbar from '../components/AppNavbar';
+
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { userService } from '../userService';
 import FormData from 'form-data';
@@ -229,6 +230,7 @@ export class CreateListingPage extends Component {
             </Button>
           </Form>
         </Container>
+  
       </div>
     );
   }
