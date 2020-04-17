@@ -3,7 +3,7 @@ import AppNavbar from '../components/AppNavbar';
 import Listings from '../components/Listings';
 import queryString from 'query-string';
 
-import { Form, Container, Button } from 'react-bootstrap';
+import { Form, Container, Button, Dropdown } from 'react-bootstrap';
 
 import axios from 'axios';
 
@@ -22,6 +22,7 @@ export class SearchPage extends Component {
       pricelt: '',
       yeargt: '',
       yearlt: '',
+      decade: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +32,26 @@ export class SearchPage extends Component {
   async handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value }, () => {
-      let { make, model, year, yearlt, yeargt, pricegt, pricelt } = this.state;
+      let {
+        make,
+        model,
+        year,
+        yearlt,
+        yeargt,
+        pricegt,
+        pricelt,
+        decade,
+      } = this.state;
+
+      if (decade) {
+        yearlt = parseInt(decade) + 9;
+        yeargt = parseInt(decade);
+      }
+
+      console.log(decade);
+      console.log(yearlt);
+      console.log(yeargt);
+
       axios
         .put('/listings/search', {
           'car.make': make,
@@ -89,6 +109,7 @@ export class SearchPage extends Component {
       yeargt,
       pricelt,
       pricegt,
+      decade,
     } = this.state;
 
     return (
@@ -162,6 +183,27 @@ export class SearchPage extends Component {
                 value={yearlt}
                 onChange={this.handleChange}
               ></Form.Control>
+
+              <Form.Label className="m-2">Decade</Form.Label>
+              <Form.Control
+                as="select"
+                onChange={this.handleChange}
+                name="decade"
+                value={decade}
+              >
+                <option default value="">
+                  Decade
+                </option>
+                <option value={1910}>1910's</option>
+                <option value={1920}>1920's</option>
+                <option value={1930}>1930's</option>
+                <option value={1940}>1940's</option>
+                <option value={1950}>1950's</option>
+                <option value={1960}>1960's</option>
+                <option value={1970}>1970's</option>
+                <option value={1980}>1980's</option>
+                <option value={1990}>1990's</option>
+              </Form.Control>
             </Form>
           </Container>
         </center>
