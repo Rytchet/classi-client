@@ -35,7 +35,7 @@ class Listings extends Component {
     return (
     
       <Container className="mt-5">
-       
+       <h1>Featured Listings</h1>
         {this.state.listings.map(listing => (
           <Link to={'/listing/' + listing._id} key={listing._id}>
             <div class="container py-2">

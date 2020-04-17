@@ -60,11 +60,7 @@ class AppNavbar extends Component {
             <Nav>
               {user && (
                 <Nav.Link style={{ color: 'white' }} href="/profile">
-                  <img
-                    src="/person-outline.svg"
-                    height="30px"
-                    width="30px"
-                  ></img>
+                  Your Profile
                 </Nav.Link>
               )}
               {!user && (
@@ -73,19 +69,7 @@ class AppNavbar extends Component {
                 </Nav.Link>
               )}
               <Nav.Link style={{ color: 'white' }} href="/login">
-                {user ? (
-                  <img
-                    src="/log-out-outline.svg"
-                    height="30px"
-                    width="30px"
-                  ></img>
-                ) : (
-                  <img
-                    src="/log-in-outline.svg"
-                    height="30px"
-                    width="30px"
-                  ></img>
-                )}
+                {user ? 'Logout' : 'Login'}
               </Nav.Link>
             </Nav>
             <Form inline action="/search">

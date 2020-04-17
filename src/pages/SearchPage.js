@@ -117,7 +117,7 @@ export class SearchPage extends Component {
         <AppNavbar user={user} />
         <br />
         <center>
-          <h1> Search...</h1>
+          <h1 className="text-black"> Search<img height="50px" width="50px"src="search.svg"></img></h1>
         </center>
         <Container>
           <center>
