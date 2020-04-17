@@ -48,6 +48,7 @@ class Listings extends Component {
                     backgroundPosition: '50% 50%',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
+                    
                   }}
                 ></div>
 

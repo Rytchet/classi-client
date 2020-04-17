@@ -88,10 +88,10 @@ export class ProfilePage extends React.Component {
               <center>
                 <br />
                 <p>
-                  <Button variant="dark" href="/createListing">
+                  <Button variant="danger" href="/createListing">
                     Create Listing
                   </Button>{' '}
-                  <Button variant="dark" href="/editProfile">
+                  <Button variant="danger" href="/editProfile">
                     Edit Profile
                   </Button>
                 </p>
