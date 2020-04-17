@@ -15,6 +15,7 @@ import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/styles/index.css';
+import Footer from './components/PageFooter';
 
 // Set up axios
 import axios from 'axios';
@@ -52,7 +53,9 @@ function App() {
         {/* For now 404 goes to the main page */}
         <Route path="/" component={HomePage} />
       </Switch>
+      <Footer/>
     </Router>
+   
   );
 }
 
