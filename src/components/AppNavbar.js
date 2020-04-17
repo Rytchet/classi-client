@@ -50,12 +50,6 @@ class AppNavbar extends Component {
               <Nav.Link style={{ color: 'white' }} href="/About">
                 About Us
               </Nav.Link>
-
-              {!user && (
-                <Nav.Link style={{ color: 'white' }} href="/register">
-                  Register
-                </Nav.Link>
-              )}
             </Nav>
             <Nav>
               {user && (
@@ -68,6 +62,11 @@ class AppNavbar extends Component {
               {user && (
                 <Nav.Link style={{ color: 'white' }} href="/profile">
                   Profile
+                </Nav.Link>
+              )}
+              {!user && (
+                <Nav.Link style={{ color: 'white' }} href="/register">
+                  Register
                 </Nav.Link>
               )}
               <Nav.Link style={{ color: 'white' }} href="/login">
