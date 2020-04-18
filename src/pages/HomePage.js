@@ -10,7 +10,7 @@ export class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      user: { email: '' },
+      user: JSON.parse(localStorage.getItem('user')),
       listings: [{ id: 'xd' }],
     };
   }
@@ -19,7 +19,6 @@ export class HomePage extends React.Component {
     axios.get('/listings').then(res => {
       this.setState(prevState => ({
         listings: [...res.data],
-        user: JSON.parse(localStorage.getItem('user')) || { email: '' },
       }));
     });
   }
@@ -27,13 +26,15 @@ export class HomePage extends React.Component {
   render() {
     let { user, listings } = this.state;
 
-    if (user.email == 'admin@classi.com') {
-      return (
-        <div>
-          <AppNavbar user={user} />
-          <AdminPanel />
-        </div>
-      );
+    if (user) {
+      if (user.email == 'admin@classi.com') {
+        return (
+          <div>
+            <AppNavbar user={user} />
+            <AdminPanel />
+          </div>
+        );
+      }
     }
 
     return (
