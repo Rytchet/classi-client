@@ -33,9 +33,7 @@ class Listings extends Component {
     }
 
     return (
-    
       <Container className="mt-5">
-       
         {this.state.listings.map(listing => (
           <Link to={'/listing/' + listing._id} key={listing._id}>
             <div class="container py-2">
@@ -67,7 +65,10 @@ class Listings extends Component {
                       {listing.price.toLocaleString(navigator.language, {
                         minimumFractionDigits: 2,
                       })}
-                      <p className="float-right"><img height="20px"src="/eye-outline.svg"></img> Times Viewed: {listing.times_viewed}</p>
+                      <p className="float-right">
+                        <img height="20px" src="/eye-outline.svg"></img> Times
+                        Viewed: {listing.times_viewed}
+                      </p>
                     </b>
                   </div>
                 </div>
@@ -75,38 +76,6 @@ class Listings extends Component {
             </div>
           </Link>
         ))}
-        {
-          /* nMight want to save these and put them into a different file for favourites.
-        
-        <CardColumns>
-          {this.state.listings.map(listing => (
-            <Link to={'/listing/' + listing._id} key={listing._id}>
-              <Card>
-                <div
-                  style={{
-                    overflow: 'hidden',
-                    width: '100%',
-                    height: '200px',
-                    backgroundImage: `url(${listing.photos[0]})`,
-                    display: 'block',
-                    backgroundPosition: '50% 50%',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                  }}
-                ></div>
-
-                <Card.Footer>
-                  <small className="text-muted">
-                    Price:{' '}
-                    {listing.price.toLocaleString(navigator.language, {
-                      minimumFractionDigits: 2,
-                    })}
-                  </small>
-                </Card.Footer>
-              </Card>
-            </Link>
-          ))}
-        </CardColumns>*/}
       </Container>
     );
   }

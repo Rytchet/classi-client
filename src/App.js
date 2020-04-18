@@ -18,10 +18,10 @@ import './components/styles/index.css';
 
 // Set up axios
 import axios from 'axios';
-axios.defaults.baseURL = 'https://classi-server.herokuapp.com/api';
+// axios.defaults.baseURL = 'https://classi-server.herokuapp.com/api';
 
 // For debug
-// axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
 
 function App() {
   return (
