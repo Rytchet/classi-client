@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
 import './styles/AppNavbar.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { withRouter } from 'react-router-dom';
 class AppNavbar extends Component {
   constructor(props) {
@@ -24,7 +25,11 @@ class AppNavbar extends Component {
 
     return (
       <div>
-        <Navbar className="color-nav" bg="dark" expand="sm">
+        <Navbar
+          className="color-nav"
+          backgroundColor="rgb(0,88,130)"
+          expand="sm"
+        >
           <Navbar.Brand style={{ color: 'white' }} href="/">
             <img
               alt=""
@@ -51,17 +56,11 @@ class AppNavbar extends Component {
                 About Us
               </Nav.Link>
             </Nav>
-            <Nav>
-              {user && (
-                <Nav.Link style={{ color: 'white' }} href="/createListing">
-                  Create your own listing
-                </Nav.Link>
-              )}
-            </Nav>
+            <Nav></Nav>
             <Nav>
               {user && (
                 <Nav.Link style={{ color: 'white' }} href="/profile">
-                  Profile
+                  Your Profile
                 </Nav.Link>
               )}
               {!user && (
@@ -81,12 +80,14 @@ class AppNavbar extends Component {
                 onChange={this.handleChange}
                 placeholder="Search"
                 className="mr-2"
+                style={{ marginBottom: '10px', marginTop: '10px' }}
               />
-              <br />
-              <Button variant="outline-info" className="" type="submit">
-                Search
-              </Button>
             </Form>
+            {user && (
+              <Button variant="danger" type="submit" href="/createListing">
+                Create a listing
+              </Button>
+            )}
           </Navbar.Collapse>
         </Navbar>
       </div>

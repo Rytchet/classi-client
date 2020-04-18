@@ -39,6 +39,7 @@ class AppCarousel extends Component {
 
     return (
       <center>
+        <h1>Today's Hottest Cars</h1>
         <Carousel>
           {this.state.listings.slice(0, 5).map(listing => (
             <Carousel.Item fade="true" key={listing._id}>

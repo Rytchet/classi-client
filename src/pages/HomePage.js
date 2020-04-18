@@ -5,6 +5,7 @@ import Listings from '../components/Listings';
 import AdminPanel from '../components/AdminPanel';
 import axios from 'axios';
 
+
 export class HomePage extends React.Component {
   constructor(props) {
     super(props);
