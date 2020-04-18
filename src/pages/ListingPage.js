@@ -26,9 +26,11 @@ export class ListingPage extends React.Component {
       msg: '',
       images: [],
       recommended: [],
+      reportedMessage: '',
     };
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleUnfavorite = this.handleUnfavorite.bind(this);
+    this.handleReport = this.handleReport.bind(this);
   }
 
   async componentDidMount() {
@@ -102,6 +104,15 @@ export class ListingPage extends React.Component {
 
     userService.unfavorite(listingId, token).then(msg => {
       this.setState({ favorited: false });
+    });
+  }
+
+  handleReport(e, id) {
+    e.preventDefault();
+    axios.put('/listings/report/' + id).then(res => {
+      this.setState({
+        reportedMessage: 'You reported the listing!',
+      });
     });
   }
 
@@ -183,6 +194,13 @@ export class ListingPage extends React.Component {
                   </Dropdown.Item>
                 </DropdownButton>
               </center>
+              <Button
+                className="mr-2"
+                onClick={e => this.handleReport(e, this.state.listing._id)}
+              >
+                Report this listing
+              </Button>
+              {this.state.reportedMessage}
               {this.state.user &&
                 this.state.user.id == this.state.listing.user_id && (
                   <Button
