@@ -31,6 +31,7 @@ export class ListingPage extends React.Component {
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleUnfavorite = this.handleUnfavorite.bind(this);
     this.handleReport = this.handleReport.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   async componentDidMount() {
@@ -87,6 +88,18 @@ export class ListingPage extends React.Component {
         });
       }
     });
+  }
+
+  handleDelete() {
+    const id = this.state.listing._id;
+
+    axios.delete('/listings/' + id, {
+      headers: {
+        'x-auth-token': this.state.user.token,
+      },
+    });
+
+    this.props.history.push({ pathname: '/profile' });
   }
 
   handleFavorite() {
@@ -204,10 +217,20 @@ export class ListingPage extends React.Component {
               {this.state.user &&
                 this.state.user.id == this.state.listing.user_id && (
                   <Button
-                    className="float-right"
+                    className="float-right ml-2"
                     href={`/editListing/${this.state.listing._id}`}
                   >
                     Edit this listing
+                  </Button>
+                )}
+              {this.state.user &&
+                this.state.user.id == this.state.listing.user_id && (
+                  <Button
+                    className="float-right ml-2"
+                    onClick={this.handleDelete}
+                    variant="danger"
+                  >
+                    Delete this listing
                   </Button>
                 )}
               {this.state.user && !this.state.favorited && (
