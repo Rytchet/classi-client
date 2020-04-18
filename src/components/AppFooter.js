@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Router, Link } from 'react-router-dom';
 import './styles/AppFooter.css';
 
 export default class AppFooter extends Component {
@@ -8,31 +9,43 @@ export default class AppFooter extends Component {
       <div>
         <footer class="footer">
           <div class="container">
-            <span class="text-white">
+            <span class="text-light">
               <Row lg={true}>
                 <Col>
-                  <h4>Stuff</h4>
-                  <ul className="list-unstyled">
-                    <li>item 1</li>
-                    <li>item 2</li>
-                    <li>item 3</li>
+                  <h4>Quick Links</h4>
+                  <ul className="list-unstyled text-light">
+                    <li>
+                      <a href="/">Home</a>
+                    </li>
+                    <li>
+                      <a href="/About">About Us</a>
+                    </li>
+                    <li>
+                      <a href="/search?q=">Search</a>
+                    </li>
                   </ul>
                 </Col>
                 <Col>
-                  <h4>Stuff</h4>
+                  <h4>Contact us</h4>
                   <ul className="list-unstyled">
-                    <li>item 1</li>
-                    <li>item 2</li>
-                    <li>item 3</li>
+                    <li>
+                      <a href="mailto:admin@classi.com">Administrator</a>
+                    </li>
+                    <li>
+                      <a href="mailto:classidevs@classi.com">Technical</a>
+                    </li>
+                    <li>
+                      <a href=":support@classi.com">Customer Support</a>
+                    </li>
                   </ul>
                 </Col>
 
                 <Col>
-                  <h4>Stuff</h4>
+                  <h4>Legal</h4>
                   <ul className="list-unstyled">
-                    <li>item 1</li>
-                    <li>item 2</li>
-                    <li>item 3</li>
+                    <li>Terms of Service</li>
+                    <li>Privacy</li>
+                    <li>Copyright</li>
                   </ul>
                 </Col>
               </Row>

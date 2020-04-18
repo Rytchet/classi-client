@@ -241,7 +241,8 @@ export class ListingPage extends React.Component {
               )}
             </p>
           </Jumbotron>
-          {this.state.recommended && (
+
+          {this.state.user && this.state.recommended && (
             <div>
               <h3>Recommended for you</h3>
               <CardListings listings={this.state.recommended} />
