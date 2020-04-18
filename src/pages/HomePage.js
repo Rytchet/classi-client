@@ -5,13 +5,12 @@ import Listings from '../components/Listings';
 import AdminPanel from '../components/AdminPanel';
 import axios from 'axios';
 
-
 export class HomePage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: {},
+      user: { email: '' },
       listings: [{ id: 'xd' }],
     };
   }
@@ -20,7 +19,7 @@ export class HomePage extends React.Component {
     axios.get('/listings').then(res => {
       this.setState(prevState => ({
         listings: [...res.data],
-        user: JSON.parse(localStorage.getItem('user')),
+        user: JSON.parse(localStorage.getItem('user')) || { email: '' },
       }));
     });
   }
