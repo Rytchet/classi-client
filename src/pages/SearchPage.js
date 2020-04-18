@@ -57,8 +57,8 @@ export class SearchPage extends Component {
           'car.make': make,
           'car.model': model,
           'car.year': year,
-          'car.year': { $lt: yearlt, $gt: yeargt },
-          price: { $lt: pricelt, $gt: pricegt },
+          'car.year': { $lte: yearlt, $gte: yeargt },
+          price: { $lte: pricelt, $gte: pricegt },
         })
         .then(res => {
           this.setState(prevState => ({
@@ -72,8 +72,8 @@ export class SearchPage extends Component {
           'car.make': make,
           'car.model': model,
           'car.year': year,
-          'car.year': { $lt: yearlt, $gt: yeargt },
-          price: { $lt: pricelt, $gt: pricegt },
+          'car.year': { $lte: yearlt, $gte: yeargt },
+          price: { $lte: pricelt, $gte: pricegt },
         })
         .then(res => {
           this.setState(prevState => ({
@@ -117,7 +117,10 @@ export class SearchPage extends Component {
         <AppNavbar user={user} />
         <br />
         <center>
-          <h1 className="text-black"> Search<img height="50px" width="50px"src="search.svg"></img></h1>
+          <h1 className="text-black">
+            {' '}
+            Search<img height="50px" width="50px" src="search.svg"></img>
+          </h1>
         </center>
         <Container>
           <center>

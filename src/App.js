@@ -28,7 +28,6 @@ function App() {
   return (
     <div className="page-container">
       <div className="content-wrap">
-        
         <Router>
           <Switch>
             <Route path="/login" exact component={LoginPage} />
@@ -61,7 +60,6 @@ function App() {
             <Route path="/" component={HomePage} />
           </Switch>
         </Router>
-        
       </div>
       <AppFooter />
     </div>
