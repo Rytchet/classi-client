@@ -10,6 +10,7 @@ export default class AdminPanel extends Component {
     this.state = {
       listings: [],
       user: JSON.parse(localStorage.getItem('user')),
+      count: 0,
     };
 
     this.handleApprove = this.handleApprove.bind(this);
@@ -22,6 +23,7 @@ export default class AdminPanel extends Component {
         if (listing.reported) {
           this.setState((prev, props) => ({
             listings: [listing, ...prev.listings],
+            count: prev.count + 1,
           }));
         }
       });
@@ -40,6 +42,9 @@ export default class AdminPanel extends Component {
         },
       }
     );
+    this.setState(prev => ({
+      count: prev.count - 1,
+    }));
     document.getElementById(id).style = 'display: none';
   }
 
@@ -51,11 +56,14 @@ export default class AdminPanel extends Component {
         'x-auth-token': this.state.user.token,
       },
     });
+    this.setState(prev => ({
+      count: prev.count - 1,
+    }));
     document.getElementById(id).style = 'display: none';
   }
 
   render() {
-    if (this.state.listings.length == 0) {
+    if (this.state.count == 0) {
       return (
         <center>
           <h1 className="mt-5">There is no reported listings</h1>
