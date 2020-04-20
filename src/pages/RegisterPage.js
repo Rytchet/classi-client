@@ -52,7 +52,7 @@ export class RegisterPage extends React.Component {
         this.props.history.push(from);
       })
       .catch(err => {
-        this.setState({ error: err.response.data.msg });
+        this.setState({ error: err.response.data.msg, loading: false });
       });
   }
 
