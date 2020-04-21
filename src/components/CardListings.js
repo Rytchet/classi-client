@@ -36,7 +36,7 @@ class Listings extends Component {
       <Container className="mt-5">
         <CardColumns>
           {this.state.listings.map(listing => (
-            <Link to={'/listing/' + listing._id} key={listing._id}>
+            <a href={'/listing/' + listing._id} key={listing._id}>
               <Card>
                 <div
                   style={{
@@ -48,7 +48,6 @@ class Listings extends Component {
                     backgroundPosition: '50% 50%',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
-                    
                   }}
                 ></div>
 
@@ -56,14 +55,14 @@ class Listings extends Component {
 
                 <Card.Footer>
                   <small className="text-muted">
-                    Price:{' '}£
+                    Price: £
                     {listing.price.toLocaleString(navigator.language, {
                       minimumFractionDigits: 2,
                     })}
                   </small>
                 </Card.Footer>
               </Card>
-            </Link>
+            </a>
           ))}
         </CardColumns>
       </Container>
