@@ -5,11 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { userService } from '../userService';
 
-// A lot of the code is taken from here
 // https://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#login-page-jsx
-// Dont sue me
-// It has some nice error messages and shit, we can implement it maybe
-
 export class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -64,9 +60,7 @@ export class LoginPage extends React.Component {
 
         <div className="container mt-5">
           <center>
-            <h1>
-              Welcome Back!
-            </h1>
+            <h1>Welcome Back!</h1>
           </center>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlid="email">

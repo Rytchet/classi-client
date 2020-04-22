@@ -60,7 +60,6 @@ export class ListingPage extends React.Component {
         });
     }
 
-    // This code is retarded, i know, maybe I'll fix it later
     // It has to get the whole user to check if this listing is favorited
     await axios.get(url).then(res => {
       console.log(res.data);
