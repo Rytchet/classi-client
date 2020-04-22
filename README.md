@@ -3,6 +3,7 @@
     <h4><i> Andrew. Richard. Perry. Tim. Oskar. Ben </i></h4>
     <img src="./public/classi.png"/>
     <h4> What is classi? </h4>
+    <a href="https://classi-client.herokuapp.com/">Visit it here!</a>
     <p>
         classi is a new way to find the classic cars you have always desired. classi provides users with a way to add, view and contact potential customers/owners about their vehicles. classi consists of both a fully functional website and iOS app.
     </p>
