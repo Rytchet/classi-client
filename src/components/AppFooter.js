@@ -35,7 +35,7 @@ export default class AppFooter extends Component {
                       <a href="mailto:classidevs@classi.com">Technical</a>
                     </li>
                     <li>
-                      <a href=":support@classi.com">Customer Support</a>
+                      <a href="mailto:support@classi.com">Customer Support</a>
                     </li>
                   </ul>
                 </Col>
