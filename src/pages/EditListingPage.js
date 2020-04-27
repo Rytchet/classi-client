@@ -178,7 +178,7 @@ export class EditListingPage extends Component {
               type="submit"
               className="mt-3 mb-5"
             >
-              Create the listing
+              Edit the listing
             </Button>
           </Form>
         </Container>
