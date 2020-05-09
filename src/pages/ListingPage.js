@@ -195,15 +195,19 @@ export class ListingPage extends React.Component {
                   className="ml-3 left"
                   size="lg"
                 >
-                  <Dropdown.Item
-                    eventKey="1"
-                    href={'mailto:' + this.state.listing.email}
-                  >
-                    Email: {this.state.listing.email}
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="2">
-                    Phone Number: {this.state.listing.phone || 'N/A'}
-                  </Dropdown.Item>
+                  {this.state.user && (
+                    <Dropdown.Item
+                      eventKey="1"
+                      href={'mailto:' + this.state.listing.email}
+                    >
+                      Email: {this.state.listing.email}
+                    </Dropdown.Item>
+                  )}
+                  {!this.state.user && (
+                    <Dropdown.Item eventKey="1">
+                      You must be logged in to contact sellers.
+                    </Dropdown.Item>
+                  )}
                 </DropdownButton>
               </center>
               <Button
